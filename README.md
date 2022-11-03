@@ -102,16 +102,16 @@ En este primer Sprint tenemos (3 noviembre hasta el 20 de noviembre), lo cual es
 
 Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las siguientes historias:
 
-Historia técnica 1: Diseño de mockups y el icono de la apk  -->  6 horas
-Historia técnica 2: Diseño base de datos  --> 1. 5 horas
-Historia de usuario 1: Registro de cuenta  --> 3 horas
-Historia de usuario 2: Inicio de sesión  --> 3 horas
-Historia de usuario 6: Escanear Productos  --> 6 horas
-Historia de usuario 7: Comparar precio de productos  --> 3 horas
-Historia de usuario 8: Valoración general producto  --> 3 horas
-Historia de usuario 9: Sugerencias de otros productos  --> 4 horas
-Historia de usuario 10: Sugerir productos que no estén en la BD  --> 3 horas
-Historia de usuario 11: Conocer método de valoración  --> 3 horas
+- _Historia técnica 1:_ Diseño de mockups y el icono de la apk  -->  6 horas
+- _Historia técnica 2:_ Diseño base de datos  --> 1. 5 horas
+- _Historia de usuario 1:_ Registro de cuenta  --> 3 horas
+- _Historia de usuario 2:_ Inicio de sesión  --> 3 horas
+- _Historia de usuario 6:_ Escanear Productos  --> 6 horas
+- _Historia de usuario 7:_ Comparar precio de productos  --> 3 horas
+- _Historia de usuario 8:_ Valoración general producto  --> 3 horas
+- _Historia de usuario 9:_ Sugerencias de otros productos  --> 4 horas
+- _Historia de usuario 10:_ Sugerir productos que no estén en la BD  --> 3 horas
+- _Historia de usuario 11:_ Conocer método de valoración  --> 3 horas
 
 Estas historias dan un total de 35.5 horas, de las 36 horas disponibles en total por los miembros del
 equipo.
