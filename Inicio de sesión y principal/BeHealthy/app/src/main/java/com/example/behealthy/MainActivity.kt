@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun registerIntent() {
         val intent = Intent(this, Register::class.java)
         startActivity(intent)
+
     }
 
     private fun login() {
