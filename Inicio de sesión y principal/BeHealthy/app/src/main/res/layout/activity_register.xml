@@ -9,19 +9,18 @@
     android:background="@drawable/main_background"
     tools:context=".Login">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="311dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="350dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="-450dp"
+        android:src="@drawable/img"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
         android:id="@+id/name"
@@ -29,8 +28,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        style="@style/Form" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_image"
+        style="@style/RegisterForm" />
 
     <EditText
         android:id="@+id/surname"
@@ -40,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
-        style="@style/Form"/>
+        style="@style/RegisterForm"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/user_name"
@@ -49,20 +49,40 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surname"
-        style="@style/Form"/>
+        style="@style/RegisterForm"/>
+
+    <EditText
+        android:id="@+id/email"
+        android:hint="@string/prompt_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="textWebEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        style="@style/RegisterForm" />
+
+    <EditText
+        android:id="@+id/password"
+        android:hint="@string/prompt_password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        style="@style/RegisterForm"/>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/next"
         android:layout_width="160dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_gravity="start"
         android:layout_marginTop="48dp"
         android:background="@drawable/border_radius"
-        android:text="@string/siguiente"
+        android:text="@string/creat_account"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/login"

@@ -27,6 +27,7 @@ class Login : AppCompatActivity() {
 
 
 
+
         firebaseAuth = FirebaseAuth.getInstance()
 
         //binding.register.setOnClickListener {
@@ -35,8 +36,6 @@ class Login : AppCompatActivity() {
         //  }
 
         binding.login.setOnClickListener { login() }
-
-
 
         binding.register.setOnClickListener( { registerIntent() })
 
@@ -61,7 +60,7 @@ class Login : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Es necesario rellenar todos los campos !!", Toast.LENGTH_SHORT).show()
 
         }
 
