@@ -1,0 +1,133 @@
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background1"
+    tools:context=".view.RecipeFormFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Nombre de la receta" />
+
+        <EditText
+            android:id="@+id/title"
+            android:layout_width="300dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rectangle"
+            android:layout_gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="Descripción"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="300dp"
+            android:layout_height="179dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle" />
+
+        <TextView
+            android:id="@+id/updatePhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="Subir foto"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/updateButton"
+            android:layout_width="176dp"
+            android:layout_height="39dp"
+            android:text="Subir foto"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rectangle"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="Ingredientes"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <EditText
+            android:id="@+id/ingredients_form_recipe"
+            android:layout_width="300dp"
+            android:layout_height="179dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle" />
+
+        <TextView
+            android:id="@+id/recipe_steps"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:text="Pasos"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="10dp"
+            />
+
+        <EditText
+            android:id="@+id/form_steps"
+            android:layout_width="300dp"
+            android:layout_height="179dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rectangle" />
+
+        <LinearLayout
+            android:id="@+id/LinearLayout02"
+            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_marginBottom="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="96dp"
+                android:layout_height="39dp"
+                android:text="Subir foto"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/rectangle" />
+
+            <androidx.appcompat.widget.AppCompatButton
+
+                android:layout_width="96dp"
+                android:layout_height="39dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="0dp"
+                android:background="@drawable/rectangle"
+                android:text="cancelar" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
