@@ -1,199 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background1"
-    tools:context=".view.UserProfileFragment">
+    android:layout_marginTop="30dp"
+    tools:context=".view.user.UserProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="113dp"
-            android:layout_height="114dp"
-            android:layout_gravity="left"
-            android:layout_margin="30dp"
-            android:src="@drawable/img"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp" />
-
-
-        <TextView
-            android:id="@+id/saveRecipesButton"
-            android:layout_width="220dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="155dp"
-            android:layout_marginTop="-115dp"
-            android:text="Nombre Usuario"
-            android:textSize="25dp" />
-
-        <LinearLayout
-            android:id="@+id/LinearLayout02"
-            android:layout_height="wrap_content"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_marginTop="60dp" >
+            android:layout_height="100dp">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="180dp"
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:text="Nombre"
+                android:textAppearance="@style/RecipesTitles" />
+
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="300dp"
                 android:layout_height="39dp"
-                android:text="Perfil"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/table_rectangle" />
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:gravity="center" />
+        </FrameLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="250dp"
+                android:text="Nombre de usuario"
+                android:textAppearance="@style/RecipesTitles" />
 
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/userNameField"
+                android:layout_width="300dp"
                 android:layout_height="39dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/table_rectangle"
-                android:text="Guardados" />
-        </LinearLayout>
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:gravity="center" />
+        </FrameLayout>
 
-        <ImageView
-            android:id="@+id/personFigure"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="-35dp"
-            android:layout_marginLeft="15dp"
-            app:srcCompat="@drawable/user_icon"
-            tools:ignore="ImageContrastCheck" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/surname"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="250dp"
+                android:text="Apellidos"
+                android:textAppearance="@style/RecipesTitles" />
 
-        <ImageView
-            android:id="@+id/saveFigure"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="-30dp"
-            android:layout_marginLeft="190dp"
-            app:srcCompat="@drawable/save_icon"
-            tools:ignore="ImageContrastCheck" />
+            <EditText
+                android:id="@+id/surnameField"
+                android:layout_width="300dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:gravity="center" />
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/titleName"
-            android:layout_width="67dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Nombre"
-            android:textAppearance="@style/RecipesTitles"/>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="250dp"
+                android:text="Correo Electrónico"
+                android:textAppearance="@style/RecipesTitles" />
 
-        <EditText
-            android:id="@+id/nameText"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="10dp"
-            android:layout_gravity="center"
-            android:background="@drawable/rectangle"
-            />
+            <EditText
+                android:id="@+id/emailField"
+                android:layout_width="300dp"
+                android:layout_height="39dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:gravity="center"
+                android:enabled="false" />
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/titleUserName"
-            android:layout_width="217dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Nombre de usuario"
-            android:textAppearance="@style/RecipesTitles"
-            android:textStyle="" />
 
-        <EditText
-            android:id="@+id/userNameText"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:layout_gravity="center"
-            />
 
-        <TextView
-            android:id="@+id/titleLastName"
-            android:layout_width="127dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Apellidos"
-            android:textAppearance="@style/RecipesTitles" />
 
-        <EditText
-            android:id="@+id/lastNamesText"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:layout_gravity="center"
-            />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/updateButton"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_radius_2"
+                android:text="Actualizar Datos"
+                android:textSize="18sp"
+                android:layout_marginTop="-20dp"/>
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/titleBirth"
-            android:layout_width="260dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Fecha de nacimiento"
-            android:textAppearance="@style/RecipesTitles" />
 
-        <EditText
-            android:id="@+id/Birthtext"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:layout_gravity="center"
-            />
-
-        <TextView
-            android:id="@+id/titleEmail"
-            android:layout_width="243dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Correo Electrónico"
-            android:textAppearance="@style/RecipesTitles" />
-
-        <EditText
-            android:id="@+id/emailText"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:layout_gravity="center"
-            />
-
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="153dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="Contraseña"
-            android:textAppearance="@style/RecipesTitles" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/title_form_recipe"
-            android:layout_width="300dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="50dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="#70F2A3"
-            android:text="Solicitar contraseña"
-            android:textColor="@color/black"
-            android:layout_gravity="center"/>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

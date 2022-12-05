@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,229 +9,332 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="-20dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="161dp"
-            android:layout_height="111dp"
-            android:layout_margin="40dp"
-            android:background="@drawable/rectangle">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
 
-            <ImageView
-                android:id="@+id/recipeImage"
-                android:layout_width="140dp"
-                android:layout_height="94dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/logo"
-                tools:ignore="ImageContrastCheck" />
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="161dp"
+                android:layout_height="111dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="140dp"
+                    android:layout_height="94dp"
+                    android:layout_marginStart="11dp"
+                    android:layout_margin="10dp"
+                    app:srcCompat="@drawable/logo"
+                    tools:ignore="ImageContrastCheck" />
 
 
-        </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:fillColor="#FF000000"
+                android:text="Nombre del producto"
+                android:layout_marginTop="-80dp"
+                android:textAppearance="@style/RecipesTitles"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/productBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginTop="-70dp"
+                android:fillColor="#FF000000"
+                android:textAppearance="@style/RecipesText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/productName"
+                tools:text="Marca del producto" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-40dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/productBrand">
+
+                <ImageView
+                    android:id="@+id/face"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/green_face"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/productRating"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ImageContrastCheck" />
+
+                <TextView
+                    android:id="@+id/productRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fillColor="#FF000000"
+                    android:textAppearance="@style/RecipesText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/face"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="92/100" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/productName"
-            android:layout_width="178dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="-30dp"
-            android:layout_marginTop="35dp"
-            android:layout_marginBottom="10dp"
-            android:fillColor="#FF000000"
-            android:text="Nombre del producto"
-            android:textAppearance="@style/RecipesTitles"
-            android:textSize="16sp" />
+            android:layout_width="match_parent"
+            android:layout_height="3dip"
+            android:layout_marginBottom="40dp"
+            android:background="#4C4C4C" />
 
         <TextView
-            android:id="@+id/productBrand"
-            android:layout_width="178dp"
-            android:layout_height="22dp"
-            android:layout_marginLeft="-177dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginBottom="10dp"
-            android:fillColor="#FF000000"
-            android:text="Marca del producto"
-            android:textAppearance="@style/RecipesText" />
-
-        <ImageView
-            android:id="@+id/face"
-            android:layout_width="31dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="-178dp"
-            android:layout_marginTop="120dp"
-            android:background="@drawable/green_face"
-            tools:ignore="ImageContrastCheck" />
-
-        <TextView
-            android:id="@+id/productRating"
-            android:layout_width="80dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="125dp"
-            android:layout_marginBottom="10dp"
-            android:fillColor="#FF000000"
-            android:text="92/100"
-            android:textAppearance="@style/RecipesText" />
+            android:textAppearance="@style/text"
+            android:text="Ingredientes"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/rectangle"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dip"
+            android:layout_marginBottom="40dp"
+            android:background="#4C4C4C" />
+
+        <TableLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="100dp"
+            android:stretchColumns="1">
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="@string/nutritional_information"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:padding="5dip"
+                    android:text="Por cada 100g"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Energía (KJ)" />
+
+                <TextView
+                    android:id="@+id/kj"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="1556 KJ" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Energía (Kcal)" />
+
+                <TextView
+                    android:id="@+id/kcal"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="375 Kcal" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Grasas" />
+
+                <TextView
+                    android:id="@+id/fat"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="16 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Grasas Saturadas" />
+
+                <TextView
+                    android:id="@+id/saturated_fats"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="10,2 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Hidratas de carbono" />
+
+                <TextView
+                    android:id="@+id/carbohydrates"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="16,3 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Azúcares" />
+
+                <TextView
+                    android:id="@+id/sugar"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="0,7 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Fibra alimentaria" />
+
+                <TextView
+                    android:id="@+id/fiber"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="31,7 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Proteinas" />
+
+                <TextView
+                    android:id="@+id/protein"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="25,5 g" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/table_rectangle">
+
+                <TextView
+                    android:layout_column="1"
+                    android:background="@drawable/table_rectangle"
+                    android:padding="5dip"
+                    android:text="Sal" />
+
+                <TextView
+                    android:id="@+id/salt"
+                    android:gravity="center"
+                    android:padding="5dip"
+                    tools:text="0,03 g" />
+            </TableRow>
+
+        </TableLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="3dip"
+            android:layout_marginBottom="40dp"
+            android:background="#4C4C4C" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/text"
+            android:text="Supermercados"
+            android:layout_marginLeft="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <ScrollView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/markets"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+
+            </FrameLayout>
+
+
+        </ScrollView>
+
 
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dip"
-        android:layout_marginTop="180dp"
-        android:background="#4C4C4C" />
-
-    <TableLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:stretchColumns="1">
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Información Nutricional"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:padding="5dip"
-                android:text="Por cada 100g"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Energía (KJ)" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="1556 KJ" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Energía (Kcal)" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="375 Kcal" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Grasas" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="16 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Grasas Saturadas" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="10,2 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Hidratas de carbono" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="16,3 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Azúcares" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="0,7 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Fibra alimentaria" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="31,7 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Proteinas" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="25,5 g" />
-        </TableRow>
-
-        <TableRow android:background="@drawable/table_rectangle">
-
-            <TextView
-                android:layout_column="1"
-                android:background="@drawable/table_rectangle"
-                android:padding="5dip"
-                android:text="Sal" />
-
-            <TextView
-                android:gravity="center"
-                android:padding="5dip"
-                android:text="0,03 g" />
-        </TableRow>
-
-    </TableLayout>
 
 
-</FrameLayout>
+</ScrollView>

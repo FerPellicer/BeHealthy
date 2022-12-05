@@ -1,5 +1,6 @@
 package com.example.behealthy.view.user
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +11,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentLoginBinding
-import com.example.behealthy.viewModel.UserViewModel
+import com.example.behealthy.view.SlideMenuActivity
+import com.example.behealthy.viewModel.AuthViewModel
 import com.example.fragments.data.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +31,7 @@ private const val ARG_PARAM2 = "param2"
 class LoginFragment : Fragment() {
 
 
-    private val userViewModel: UserViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
 
     private var _binding: FragmentLoginBinding? = null
 
@@ -53,20 +55,19 @@ class LoginFragment : Fragment() {
         binding.login.setOnClickListener { login() }
         binding.register.setOnClickListener { register() }
 
-        userViewModel.currentUser?.let { Log.e("", it.toString()) }
+        authViewModel.currentUser?.let { Log.e("", it.toString()) }
     }
 
 
     private fun login() {
-        Log.e("Holis", "<hoisudq")
-        Toast.makeText(activity, "Holis", Toast.LENGTH_LONG).show()
+
         val email = binding.email.text.toString()
         val password = binding.password.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
 
-            userViewModel.loginUser(email, password)
-            userViewModel.loginFlow.observe(viewLifecycleOwner) {
+            authViewModel.loginUser(email, password)
+            authViewModel.loginFlow.observe(viewLifecycleOwner) {
                 it?.let {
                     when (it) {
                         is Resource.Failure -> {
@@ -74,6 +75,13 @@ class LoginFragment : Fragment() {
                         }
                         is Resource.Success -> {
                             Log.e("Succes", "Se ha iniciado sesión")
+
+                            Toast.makeText(
+                                activity, "Se ha iniciado correctamente",
+                                Toast.LENGTH_SHORT)
+
+                            val intent = Intent(activity, SlideMenuActivity::class.java)
+                            startActivity(intent)
                         }
                         else -> {}
                     }

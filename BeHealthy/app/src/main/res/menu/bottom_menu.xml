@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/nav_home"
         android:icon="@drawable/bottom_nav_bar_home"
         android:title="@string/bottom_menu_home"
         />
 
     <item
-        android:id="@+id/find"
-        android:title="@string/bottom_menu_find"
-        android:icon="@drawable/botton_nav_bar_find"/>
-
-    <item
-        android:id="@+id/scan"
+        android:id="@+id/nav_scan"
         android:title="@string/bottom_menu_scan"
         android:icon="@drawable/bottom_nav_bar_scan"/>
 
     <item
-        android:id="@+id/recipe"
+        android:id="@+id/nav_recipe_form"
         android:title="@string/bottom_menu_recipe"
         android:icon="@drawable/bottom_nav_bar_recipe"/>
 </menu>

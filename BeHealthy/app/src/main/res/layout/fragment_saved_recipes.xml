@@ -6,81 +6,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background1"
-    tools:context=".view.SavedRecipesFragment">
+    tools:context=".view.user.SavedRecipesFragment">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:textSize="40sp"
+        android:text="SAVED RECIPES"
+        android:gravity="center">
+    </TextView>
 
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
-            android:layout_width="113dp"
-            android:layout_height="114dp"
-            android:layout_gravity="left"
-            android:layout_margin="30dp"
-            android:src="@drawable/img"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp" />
-
-        <TextView
-            android:id="@+id/saveRecipesButton"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="155dp"
-            android:layout_marginTop="-115dp"
-            android:text="BeHealthy"
-            android:textSize="25dp" />
-
-        <LinearLayout
-            android:id="@+id/LinearLayout02"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:layout_marginTop="60dp" >
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="180dp"
-                android:layout_height="39dp"
-                android:text="Perfil"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/table_rectangle" />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:layout_marginBottom="0dp"
-                android:background="@drawable/table_rectangle"
-                android:text="Guardados" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/personFigure"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="-35dp"
-            android:layout_marginLeft="15dp"
-            app:srcCompat="@drawable/user_icon"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageView
-            android:id="@+id/saveFigure"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="left"
-            android:layout_marginTop="-30dp"
-            android:layout_marginLeft="210dp"
-            app:srcCompat="@drawable/save_icon"
-            tools:ignore="ImageContrastCheck" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/vertical_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-    </LinearLayout>
 </FrameLayout>

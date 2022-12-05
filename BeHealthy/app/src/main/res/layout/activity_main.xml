@@ -7,16 +7,4 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity" >
 
-    <!--com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavBar"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        app:itemIconSize="30dp"
-        app:itemTextColor="@color/black"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu"/-->
 </androidx.constraintlayout.widget.ConstraintLayout>

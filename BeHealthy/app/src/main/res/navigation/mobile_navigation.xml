@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.behealthy.view.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        />
+        <action
+            android:id="@+id/action_nav_home_to_nav_recipe"
+            app:destination="@id/nav_recipe" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.behealthy.view.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.behealthy.view.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.behealthy.view.UserProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_user_profile"/>
+
+    <fragment
+        android:id="@+id/nav_scan"
+        android:name="com.example.behealthy.view.ui.scan.ScannerFragment"
+        android:label="Scanner"
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/action_nav_scan_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_find"
+        android:name="com.example.behealthy.view.ui.find.FindFragment"
+        android:label="Find"
+        tools:layout="@layout/fragment_find"/>
+
+    <fragment
+        android:id="@+id/nav_recipe_form"
+        android:name="com.example.behealthy.view.ui.recipe.RecipeFormFragment"
+        android:label="AddRecipe"
+        tools:layout="@layout/fragment_recipe_form"/>
+
+    <fragment
+        android:id="@+id/nav_saved"
+        android:name="com.example.behealthy.view.SavedRecipesFragment"
+        android:label="SavedRecipes"
+        tools:layout="@layout/fragment_saved_recipes"/>
+
+    <fragment
+        android:id="@+id/nav_recipe"
+        android:name="com.example.behealthy.view.ui.recipe.RecipeDataFragment"
+        android:label="RecipeData"
+        tools:layout="@layout/fragment_recipe_data">
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_user_data"
+        android:name="com.example.behealthy.UserDataActivity"
+        android:label="h"
+        tools:layout="@layout/activity_user_data">
+    </activity>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.behealthy.view.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+
+
+</navigation>

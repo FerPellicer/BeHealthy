@@ -1,55 +1,46 @@
 package com.example.behealthy.viewModel
 
+import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fragments.data.AuthRepositoryImpl
+import com.example.behealthy.model.UserRepositoryImpl
 import com.example.fragments.data.Resource
-import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val repository: AuthRepositoryImpl
-) : ViewModel() {
+    private val repository: UserRepositoryImpl ) : ViewModel() {
 
 
-    private val _loginFlow = MutableLiveData<Resource<FirebaseUser>?>(null)
-    val loginFlow: LiveData<Resource<FirebaseUser>?> = _loginFlow
+    private val _userDataFlow = MutableLiveData<Resource<MutableMap<String, Any>?>?>(null)
+    val userDataFlow: LiveData<Resource<MutableMap<String, Any>?>?> = _userDataFlow
 
-    private val _signupFlow = MutableLiveData<Resource<FirebaseUser>?>(null)
-    val signupFlow: LiveData<Resource<FirebaseUser>?> = _signupFlow
+    private val _userUpdatedDataFlow = MutableLiveData<Resource<String>?>(null)
+    val userUpdatedDataFlow: LiveData<Resource<String>?> = _userUpdatedDataFlow
 
-    val currentUser: FirebaseUser?
-        get() = repository.currentUser
+    private val _imageUrlFlow = MutableLiveData<Resource<String>?>(null)
+    val imageUrlFlow: LiveData<Resource<String>?> = _imageUrlFlow
 
-    init {
-        if (repository.currentUser != null) {
-            _loginFlow.value = Resource.Success(repository.currentUser!!)
-        }
+
+    fun userData() = viewModelScope.launch {
+        val result = repository.userData()
+        _userDataFlow.value = result
     }
 
-    fun loginUser(email: String, password: String) = viewModelScope.launch {
-
-        val result = repository.login(email, password)
-        _loginFlow.value = result
-
+    fun updateUserData(updatedData: HashMap<String, Any>) = viewModelScope.launch {
+        val result = repository.updateUserData(updatedData)
+        _userUpdatedDataFlow.value = result
     }
 
-    fun signupUser(name: String, email: String, password: String) = viewModelScope.launch {
-        _signupFlow.value = Resource.Loading
-        val result = repository.signup(name, email, password)
-        _signupFlow.value = result
-    }
-
-    fun logout() {
-        repository.logout()
-        _loginFlow.value = null
-        _signupFlow.value = null
+    fun changeImage(fileUri: Uri, fileName: String) = viewModelScope.launch{
+        val result = repository.changeUserImage(fileUri, fileName)
+        _imageUrlFlow.value = result
     }
 
 }

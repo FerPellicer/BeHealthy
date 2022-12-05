@@ -2,8 +2,8 @@
   <library name="Gradle: com.google.firebase:firebase-database-collection:18.0.1@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/44441130fed09887639607d6bb4a3c79/transformed/firebase-database-collection-18.0.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/442fd0f3d8b97742068f4972a3ec1b76/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/442fd0f3d8b97742068f4972a3ec1b76/transformed/jetified-firebase-database-collection-18.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/442fd0f3d8b97742068f4972a3ec1b76/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/442fd0f3d8b97742068f4972a3ec1b76/transformed/jetified-firebase-database-collection-18.0.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>

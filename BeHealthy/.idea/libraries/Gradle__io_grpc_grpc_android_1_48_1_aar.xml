@@ -2,9 +2,9 @@
   <library name="Gradle: io.grpc:grpc-android:1.48.1@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/43720114c75d3962f4069c65299ab122/transformed/grpc-android-1.48.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f2e42c844063c50a56c4aa6347fbdd5a/transformed/jetified-grpc-android-1.48.1/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f2e42c844063c50a56c4aa6347fbdd5a/transformed/jetified-grpc-android-1.48.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f2e42c844063c50a56c4aa6347fbdd5a/transformed/jetified-grpc-android-1.48.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f2e42c844063c50a56c4aa6347fbdd5a/transformed/jetified-grpc-android-1.48.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-android/1.48.1/92745c99bdae38ca7c2847d52fb0cb33458a6c61/grpc-android-1.48.1-javadoc.jar!/" />

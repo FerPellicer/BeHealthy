@@ -4,6 +4,8 @@ plugins {
     id 'com.google.gms.google-services'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+    //id 'androidx.navigation.safeargs.kotlin'
+    //id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -36,6 +38,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -46,6 +49,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
+    implementation 'com.android.car.ui:car-ui-lib:2.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
@@ -70,4 +75,17 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.17'
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Load Images into TextViews
+    implementation "com.github.bumptech.glide:glide:4.13.0"
+
+    // Revisar
+    implementation 'com.google.android.material:material:1.0.0'
+
+    //implementation "androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3"
+
+    // Qr reader
+
+    implementation 'com.github.yuriy-budiyev:code-scanner:2.3.2'
+
 }

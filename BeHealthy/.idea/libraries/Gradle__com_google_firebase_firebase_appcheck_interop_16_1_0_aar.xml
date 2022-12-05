@@ -2,8 +2,8 @@
   <library name="Gradle: com.google.firebase:firebase-appcheck-interop:16.1.0@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/17736ffed09c6318e9f86dbe211b8862/transformed/firebase-appcheck-interop-16.1.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5fd8f828a1da24ee03d84f2d227f4379/transformed/jetified-firebase-appcheck-interop-16.1.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5fd8f828a1da24ee03d84f2d227f4379/transformed/jetified-firebase-appcheck-interop-16.1.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5fd8f828a1da24ee03d84f2d227f4379/transformed/jetified-firebase-appcheck-interop-16.1.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5fd8f828a1da24ee03d84f2d227f4379/transformed/jetified-firebase-appcheck-interop-16.1.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

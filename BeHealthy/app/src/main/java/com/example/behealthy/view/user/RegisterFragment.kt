@@ -13,6 +13,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -20,7 +21,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentRegisterBinding
-import com.example.behealthy.viewModel.UserViewModel
+import com.example.behealthy.view.SlideMenuActivity
+import com.example.behealthy.viewModel.AuthViewModel
+import com.example.fragments.data.await
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,18 +31,22 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 
 
+@AndroidEntryPoint
 class RegisterFragment : Fragment() {
 
-    private val userViewModel: UserViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
 
     private var _binding: FragmentRegisterBinding? = null
 
     private val binding get() = _binding!!
 
     private var uri: String = ""
+
+    private var imageUrl = ""
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -94,6 +101,7 @@ class RegisterFragment : Fragment() {
                 ).show()
             } else {
                 createUser()
+
             }
         } else {
             Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
@@ -121,17 +129,17 @@ class RegisterFragment : Fragment() {
 
                     val currentUser = firebaseAuth.currentUser
 
-                    val userInfo = hashMapOf(
-                        "email" to binding.email.text.toString(),
-                        "name" to binding.name.text.toString(),
-                        "surname" to binding.surname.text.toString(),
-                        "userName" to binding.userName.text.toString()
-                    )
-
-
                     if (currentUser != null) {
 
                         uploadImage(currentUser.uid)
+
+                        val userInfo = hashMapOf(
+                            "email" to binding.email.text.toString(),
+                            "name" to binding.name.text.toString(),
+                            "surname" to binding.surname.text.toString(),
+                            "userName" to binding.userName.text.toString(),
+                            "imageProfile" to ""
+                        )
 
                         db.collection("users").document(currentUser.uid)
                             .set(userInfo)
@@ -146,10 +154,14 @@ class RegisterFragment : Fragment() {
                                     Toast.LENGTH_SHORT
                                 ).show()
 
-                                userViewModel.loginUser(
+                                authViewModel.loginUser(
                                     binding.email.text.toString(),
                                     binding.password.text.toString()
                                 )
+
+                                val intent = Intent(activity, SlideMenuActivity::class.java)
+                                startActivity(intent)
+
                             }
                             .addOnFailureListener { e ->
                                 Log.w(TAG, "Error adding document", e)
@@ -266,12 +278,18 @@ class RegisterFragment : Fragment() {
 
             val storageRef = storage.reference
             val fileUri = Uri.parse(uri)
-            val fileName = storageRef.child("profileImages/${uid}/${fileUri.lastPathSegment}")
 
-            fileName.putFile(fileUri)
-                .addOnSuccessListener { taskSnapshot ->
+
+            val cR = requireContext().contentResolver
+            val mime = MimeTypeMap.getSingleton()
+            val type = mime.getExtensionFromMimeType(cR.getType(fileUri))
+            val fileName = storageRef.child("profileImages/${uid}/${fileUri.lastPathSegment}.${type}")
+
+
+            fileName.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
                     taskSnapshot.storage.downloadUrl.addOnSuccessListener {
-                        //val imageUrl = it.toString()
+                        val imageDonwloadUrl = it.toString()
+                        Log.e("Url Imagen", imageDonwloadUrl)
                         Log.i("Progile image", "Image uploaded successfully!")
                     }
                 }
@@ -280,6 +298,7 @@ class RegisterFragment : Fragment() {
                     Log.e("Progile image", e.message.toString())
                 })
         }
+
     }
 
 

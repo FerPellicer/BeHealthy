@@ -1,12 +1,13 @@
-package com.example.behealthy.view.user
+package com.example.behealthy
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentUserFormBinding
+import com.example.behealthy.view.user.LoginFragment
+import com.example.behealthy.view.user.RegisterFragment
 
 class UserFormFragment : Fragment() {
 
@@ -47,18 +48,8 @@ class UserFormFragment : Fragment() {
             ?.commitNow()
     }
 
-
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UserFormFragment.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) = UserFormFragment()
+        fun newInstance() = UserFormFragment()
     }
 }
