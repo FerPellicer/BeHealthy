@@ -72,7 +72,8 @@ class LoginFragment : Fragment() {
                     when (it) {
                         is Resource.Failure -> {
                             Log.e("Error", "No se ha iniciado sesión")
-                            Toast.makeText(requireActivity(), "El correo o la contraseña son incorrectos").show()
+                            Toast.makeText(requireActivity(), "El correo o la contraseña son incorrectos",
+                                Toast.LENGTH_SHORT).show()
                         }
                         is Resource.Success -> {
                             Log.e("Succes", "Se ha iniciado sesión")
