@@ -23,7 +23,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="28dp"
 
-            android:src="@drawable/img"
+            tools:src="@drawable/img"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,7 +68,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.724"
-            app:srcCompat="@drawable/logo" />
+            tools:srcCompat="@drawable/logo" />
 
         <ImageView
             android:id="@+id/hearth"

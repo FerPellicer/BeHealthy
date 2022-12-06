@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/background1"
-    tools:context=".view.ui.recipe.RecipeFormFragment">
+    tools:context=".view.recipe.RecipeFormFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

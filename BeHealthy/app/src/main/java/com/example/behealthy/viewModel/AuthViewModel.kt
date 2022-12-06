@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fragments.data.AuthRepositoryImpl
+import com.example.behealthy.model.repository.auth.AuthRepositoryImpl
 import com.example.fragments.data.Resource
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel

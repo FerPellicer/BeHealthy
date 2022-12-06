@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background1"
-    tools:context=".view.user.SavedRecipesFragment">
+    tools:context=".view.recipe.SavedRecipesFragment">
 
     <TextView
         android:layout_width="match_parent"

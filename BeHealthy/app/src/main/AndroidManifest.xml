@@ -17,7 +17,7 @@
         android:theme="@style/Theme.BeHealthy"
         tools:targetApi="31">
         <activity
-            android:name=".UserDataActivity"
+            android:name=".view.UserDataActivity"
             android:exported="false"
             android:label="@string/title_activity_user_data">
             <meta-data

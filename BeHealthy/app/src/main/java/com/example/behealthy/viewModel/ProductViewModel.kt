@@ -1,11 +1,10 @@
 package com.example.behealthy.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.behealthy.model.ProductRepositoryImpl
+import com.example.behealthy.model.repository.product.ProductRepositoryImpl
 import com.example.fragments.data.Resource
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot

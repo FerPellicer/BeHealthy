@@ -99,7 +99,7 @@ class LoginFragment : Fragment() {
 
     private fun register() {
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, RegisterFragment.newInstance("", ""))
+            ?.replace(R.id.container, RegisterFragment.newInstance())
             ?.commitNow()
     }
 
