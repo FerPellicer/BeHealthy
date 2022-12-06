@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation.xml"
+    app:startDestination="@id/userFormFragment">
+
+    <fragment
+        android:id="@+id/userFormFragment"
+        android:name="com.example.behealthy.view.user.UserFormFragment"
+        android:label="fragment_user_form"
+        tools:layout="@layout/fragment_user_form" >
+        <action
+            android:id="@+id/action_userFormFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_userFormFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.behealthy.view.user.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_hilt_SlideMenuActivity2"
+            app:destination="@id/hilt_SlideMenuActivity2" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.behealthy.view.user.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_hilt_SlideMenuActivity2"
+            app:destination="@id/hilt_SlideMenuActivity2" />
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/hilt_SlideMenuActivity2"
+        android:name="com.example.behealthy.view.Hilt_SlideMenuActivity"
+        android:label="Hilt_SlideMenuActivity" />
+</navigation>

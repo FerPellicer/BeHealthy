@@ -72,6 +72,7 @@ class LoginFragment : Fragment() {
                     when (it) {
                         is Resource.Failure -> {
                             Log.e("Error", "No se ha iniciado sesión")
+                            Toast.makeText(requireActivity(), "El correo o la contraseña son incorrectos").show()
                         }
                         is Resource.Success -> {
                             Log.e("Succes", "Se ha iniciado sesión")
@@ -82,6 +83,7 @@ class LoginFragment : Fragment() {
 
                             val intent = Intent(activity, SlideMenuActivity::class.java)
                             startActivity(intent)
+                            getActivity()?.finish()
                         }
                         else -> {}
                     }

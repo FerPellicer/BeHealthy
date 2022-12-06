@@ -3,8 +3,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.navigation.findNavController
 import com.example.behealthy.R
-import com.example.behealthy.UserFormFragment
+import com.example.behealthy.view.user.RegisterFragment
+import com.example.behealthy.view.user.UserFormFragment
 import com.example.behealthy.viewModel.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this, SlideMenuActivity::class.java)
             startActivity(intent)
+            this.finish()
         }
 
 

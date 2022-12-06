@@ -24,15 +24,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".SlideMenuActivity"
-            android:exported="false"
-            android:label="@string/title_activity_slide_menu"
-            android:theme="@style/Theme.BeHealthy.NoActionBar">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+
         <activity
             android:name=".view.SlideMenuActivity"
             android:exported="false"

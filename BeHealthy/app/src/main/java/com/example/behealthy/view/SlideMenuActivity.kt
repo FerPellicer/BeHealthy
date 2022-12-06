@@ -113,6 +113,7 @@ class SlideMenuActivity : AppCompatActivity() {
                 authViewModel.logout()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                this.finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)

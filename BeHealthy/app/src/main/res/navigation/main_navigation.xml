@@ -33,6 +33,7 @@
             app:destination="@id/productFragment" />
     </fragment>
 
+
     <fragment
         android:id="@+id/nav_recipe_form"
         android:name="com.example.behealthy.view.recipe.RecipeFormFragment"
@@ -58,7 +59,6 @@
         android:label="h"
         tools:layout="@layout/activity_user_data">
     </activity>
-
     <fragment
         android:id="@+id/productFragment"
         android:name="com.example.behealthy.view.product.ProductFragment"
