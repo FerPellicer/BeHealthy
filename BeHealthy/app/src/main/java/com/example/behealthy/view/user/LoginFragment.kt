@@ -72,6 +72,8 @@ class LoginFragment : Fragment() {
                     when (it) {
                         is Resource.Failure -> {
                             Log.e("Error", "No se ha iniciado sesión")
+                            Toast.makeText(requireActivity(), "El correo o la contraseña son incorrectos",
+                                Toast.LENGTH_SHORT).show()
                         }
                         is Resource.Success -> {
                             Log.e("Succes", "Se ha iniciado sesión")
@@ -82,6 +84,7 @@ class LoginFragment : Fragment() {
 
                             val intent = Intent(activity, SlideMenuActivity::class.java)
                             startActivity(intent)
+                            getActivity()?.finish()
                         }
                         else -> {}
                     }
@@ -99,7 +102,7 @@ class LoginFragment : Fragment() {
 
     private fun register() {
         activity?.supportFragmentManager?.beginTransaction()
-            ?.replace(R.id.container, RegisterFragment.newInstance("", ""))
+            ?.replace(R.id.container, RegisterFragment.newInstance())
             ?.commitNow()
     }
 

@@ -1,7 +1,10 @@
 package com.example.behealthy.adapter
 
 import android.annotation.SuppressLint
+<<<<<<< HEAD
 import android.content.ContentValues
+=======
+>>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,12 +17,17 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
-import com.example.behealthy.model.Recipe
 import com.example.behealthy.model.LocalUser
+<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.awaitAll
+=======
+import com.example.behealthy.model.data.Recipe
+import com.google.firebase.firestore.FirebaseFirestore
+
+>>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c
 
 class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<String>): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
 

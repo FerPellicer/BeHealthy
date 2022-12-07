@@ -1,7 +1,9 @@
 package com.example.fragments.data
 
-import com.example.behealthy.model.UserRepository
-import com.example.behealthy.model.UserRepositoryImpl
+import com.example.behealthy.model.repository.user.UserRepository
+import com.example.behealthy.model.repository.user.UserRepositoryImpl
+import com.example.behealthy.model.repository.auth.AuthRepository
+import com.example.behealthy.model.repository.auth.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage

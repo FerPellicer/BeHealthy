@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.behealthy.view.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        />
+        <action
+            android:id="@+id/action_nav_home_to_nav_recipe"
+            app:destination="@id/nav_recipe" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_profile"
+<<<<<<< HEAD:BeHealthy/app/src/main/res/navigation/mobile_navigation.xml
+        android:name="com.example.behealthy.view.user.UserProfileFragment"
+=======
+        android:name="com.example.behealthy.view.currentUser.UserProfileFragment"
+>>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/res/navigation/main_navigation.xml
+        android:label="Profile"
+        tools:layout="@layout/fragment_user_profile"/>
+
+    <fragment
+        android:id="@+id/nav_scan"
+        android:name="com.example.behealthy.view.scanner.ScannerFragment"
+        android:label="Scanner"
+        tools:layout="@layout/fragment_scanner">
+        <action
+            android:id="@+id/action_nav_scan_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_recipe_form"
+        android:name="com.example.behealthy.view.recipe.RecipeFormFragment"
+        android:label="AddRecipe"
+        tools:layout="@layout/fragment_recipe_form"/>
+
+    <fragment
+        android:id="@+id/nav_saved"
+<<<<<<< HEAD:BeHealthy/app/src/main/res/navigation/mobile_navigation.xml
+        android:name="com.example.behealthy.view.user.SavedRecipesFragment"
+=======
+        android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
+>>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/res/navigation/main_navigation.xml
+        android:label="SavedRecipes"
+        tools:layout="@layout/fragment_saved_recipes"/>
+
+    <fragment
+        android:id="@+id/nav_recipe"
+        android:name="com.example.behealthy.view.recipe.RecipeDataFragment"
+        android:label="RecipeData"
+        tools:layout="@layout/fragment_recipe_data">
+    </fragment>
+
+    <activity
+        android:id="@+id/nav_user_data"
+        android:name="com.example.behealthy.view.UserDataActivity"
+        android:label="h"
+        tools:layout="@layout/activity_user_data">
+    </activity>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.example.behealthy.view.product.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" />
+
+
+</navigation>
