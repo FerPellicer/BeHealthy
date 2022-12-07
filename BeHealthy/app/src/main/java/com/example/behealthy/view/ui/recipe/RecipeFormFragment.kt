@@ -30,8 +30,6 @@ import com.google.firebase.storage.ktx.storage
 
 class RecipeFormFragment : Fragment() {
     private var uri: String = ""
-    private var url: String = ""
-
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var storage: FirebaseStorage = Firebase.storage
@@ -93,7 +91,7 @@ class RecipeFormFragment : Fragment() {
                             "ingredients" to binding.ingredientsFormRecipe.text.toString(),
                             "image" to it.toString(),
                             "steps" to binding.formSteps.text.toString(),
-                            "likes" to "0 likes",
+                            "likes" to "0",
                             "user" to (firebaseAuth.currentUser?.uid)
                         )
 
@@ -121,8 +119,6 @@ class RecipeFormFragment : Fragment() {
     }
 
     private fun changeRecipeImage() {
-
-        Log.e("", "Holis")
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (PackageManager.PERMISSION_DENIED) {

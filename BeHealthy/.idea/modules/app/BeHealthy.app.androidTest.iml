@@ -36,7 +36,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c040ddb1bac5d6c44a68c9f710c4d6e2/transformed/jetified-lifecycle-viewmodel-ktx-2.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/786b99ee88fb3c4ce4481797cfd63425/transformed/jetified-hilt-android-2.44-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/fd27886c717af5f190d1b7d2be3f6ecf/transformed/material-1.7.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/42c6e477490d206e853bf74c91e20866/transformed/jetified-dagger-android-support-2.17-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/b1ff95ba987fb59c3f9f18cd033ee559/transformed/jetified-dagger-android-support-2.17-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a23e3128f03fe26cb47cadfed631a8a7/transformed/jetified-car-ui-lib-2.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d5b3d82854fc8d54386399c558896653/transformed/preference-1.1.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/acffc7bb831d7c3e44d96856378a6205/transformed/appcompat-1.5.1-api.jar</arg>
@@ -153,8 +153,8 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d44640fc23f29b698c44616e786f671a/transformed/jetified-failureaccess-1.0.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c4ef1e695b739605a51a43824cb7e631/transformed/jetified-checker-qual-3.12.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f680d8969be97423109b8bca0dd0db80/transformed/jetified-j2objc-annotations-1.3.jar</arg>
-                <arg>$USER_HOME$/Library/Android/sdk/platforms/android-32/android.jar</arg>
-                <arg>$USER_HOME$/Library/Android/sdk/build-tools/30.0.3/core-lambda-stubs.jar</arg>
+                <arg>$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-32/android.jar</arg>
+                <arg>$USER_HOME$/AppData/Local/Android/Sdk/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
             </stringArg>
             <stringArg name="destination" arg="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debugAndroidTest" />

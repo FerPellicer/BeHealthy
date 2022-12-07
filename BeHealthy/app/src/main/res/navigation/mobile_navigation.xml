@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.behealthy.view.UserProfileFragment"
+        android:name="com.example.behealthy.view.user.UserProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_user_profile"/>
 
@@ -58,7 +58,7 @@
 
     <fragment
         android:id="@+id/nav_saved"
-        android:name="com.example.behealthy.view.SavedRecipesFragment"
+        android:name="com.example.behealthy.view.user.SavedRecipesFragment"
         android:label="SavedRecipes"
         tools:layout="@layout/fragment_saved_recipes"/>
 

@@ -72,8 +72,8 @@
 
         <ImageView
             android:id="@+id/hearth"
-            android:layout_width="26dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,15 +99,15 @@
 
         <ImageView
             android:id="@+id/save"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.156"
+            app:layout_constraintHorizontal_bias="0.161"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.909"
+            app:layout_constraintVertical_bias="0.906"
             app:srcCompat="@drawable/save_icon" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

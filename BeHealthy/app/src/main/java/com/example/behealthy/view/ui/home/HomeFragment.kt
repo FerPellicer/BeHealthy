@@ -18,6 +18,7 @@ import com.google.firebase.firestore.*
 open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
     private lateinit var recipeArrayList: ArrayList<Recipe>
+    private lateinit var recipesIds: ArrayList<String>
     private lateinit var recipeRecyclerView: RecyclerView
     private lateinit var svSearch : SearchView
     private lateinit var myAdapter: CardViewAdapter
@@ -57,7 +58,9 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
         recipeArrayList = arrayListOf()
 
-        myAdapter = CardViewAdapter(recipeArrayList)
+        recipesIds = arrayListOf()
+
+        myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
 
         recipeRecyclerView.adapter = myAdapter
 
@@ -80,7 +83,9 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
                 for (dc : DocumentChange in value?.documentChanges!!){
 
                     if(dc.type == DocumentChange.Type.ADDED){
+                        Log.e("lista", dc.document.toString())
                         recipeArrayList.add(dc.document.toObject(Recipe::class.java))
+                        recipesIds.add(dc.document.id)
                     }
                 }
                 myAdapter.init()
