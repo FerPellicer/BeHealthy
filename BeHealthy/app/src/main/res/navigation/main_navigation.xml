@@ -19,11 +19,7 @@
 
     <fragment
         android:id="@+id/nav_profile"
-<<<<<<< HEAD:BeHealthy/app/src/main/res/navigation/mobile_navigation.xml
-        android:name="com.example.behealthy.view.user.UserProfileFragment"
-=======
         android:name="com.example.behealthy.view.currentUser.UserProfileFragment"
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/res/navigation/main_navigation.xml
         android:label="Profile"
         tools:layout="@layout/fragment_user_profile"/>
 
@@ -46,11 +42,7 @@
 
     <fragment
         android:id="@+id/nav_saved"
-<<<<<<< HEAD:BeHealthy/app/src/main/res/navigation/mobile_navigation.xml
-        android:name="com.example.behealthy.view.user.SavedRecipesFragment"
-=======
         android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/res/navigation/main_navigation.xml
         android:label="SavedRecipes"
         tools:layout="@layout/fragment_saved_recipes"/>
 

@@ -1,4 +1,4 @@
-package com.example.behealthy.model
+package com.example.behealthy.model.data
 
 data class LocalUser(var email : String ?= null,
                      var likesUser : ArrayList<String>  ?= null,

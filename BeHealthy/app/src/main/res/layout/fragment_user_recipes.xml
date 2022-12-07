@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".view.user.UserRecipesFragment"
+    tools:context="view.currentUser.UserRecipesFragment"
     android:background="@drawable/background2">
-=======
-    tools:context=".view.currentUser.UserRecipesFragment">
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

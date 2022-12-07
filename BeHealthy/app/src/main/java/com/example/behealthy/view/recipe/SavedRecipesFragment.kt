@@ -7,17 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.behealthy.R
 import com.example.behealthy.adapter.CardViewAdapter
-import com.example.behealthy.databinding.FragmentHomeBinding
 import com.example.behealthy.databinding.FragmentSavedRecipesBinding
-import com.example.behealthy.model.LocalUser
-import com.example.behealthy.model.Recipe
-import com.example.behealthy.view.ui.home.HomeFragment
+import com.example.behealthy.model.data.LocalUser
+import com.example.behealthy.model.data.Recipe
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 

@@ -5,8 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BeHealthy.iml" filepath="$PROJECT_DIR$/.idea/modules/BeHealthy.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeHealthy.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PAMN.BeHealthy.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PAMN.BeHealthy.app.main.iml" />
     </modules>
   </component>
 </project>

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.example.behealthy.databinding.FragmentRecipeDataBinding
-import com.example.behealthy.model.LocalUser
+import com.example.behealthy.model.data.LocalUser
 import com.example.behealthy.model.data.Recipe
 import com.google.firebase.firestore.FirebaseFirestore
 

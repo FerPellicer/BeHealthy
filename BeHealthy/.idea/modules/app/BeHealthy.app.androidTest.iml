@@ -71,6 +71,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/9df6633b73452d2a26790e80436b66f2/transformed/jetified-hamcrest-core-1.3.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c29161eabd2a92bcc40500561f6e5922/transformed/jetified-core-1.5.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f0d133436132c0e5cf45a12625515aee/transformed/jetified-core-ktx-1.7.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/8f42c9d664d6119bd4b272d44ca76554/transformed/recyclerview-1.2.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/9f784b1181d84e79327340ef82a751d3/transformed/jetified-transport-runtime-3.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/19072de9b1cdc21851eb7834d407ffd4/transformed/jetified-dagger-android-2.35.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/aa51f1f6903004832478b7e2e92794ff/transformed/jetified-code-scanner-2.3.2-api.jar</arg>
@@ -84,7 +85,6 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/8cc9229db2e7137bef81c8993dd86d1f/transformed/transition-1.2.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a9ef86755c98da86f429ef75156cdefa/transformed/vectordrawable-animated-1.1.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b0cdb2ac6fb9e6e0ca4f291c7a68f3fe/transformed/vectordrawable-1.1.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/8f42c9d664d6119bd4b272d44ca76554/transformed/recyclerview-1.2.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/267c310ee5a0dcb8eb40648ad95f59b2/transformed/slidingpanelayout-1.2.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a06b2eedeaa9f3d1feadb8b8a04617ae/transformed/viewpager-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5243d137e888f01dea0d8cf4e3dd6f74/transformed/customview-1.1.0-api.jar</arg>
@@ -223,7 +223,7 @@
     <content url="file://$MODULE_DIR$/../../../app/src/androidTestDebug" />
     <orderEntry type="jdk" jdkName="Android API 32 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="BeHealthy.app.main" scope="TEST" />
+    <orderEntry type="module" module-name="PAMN.BeHealthy.app.main" scope="TEST" />
     <orderEntry type="module-library" scope="TEST">
       <library name="Gradle: kaptGeneratedClasses">
         <CLASSES>

@@ -7,17 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD:BeHealthy/app/src/main/java/com/example/behealthy/view/user/UserRecipesFragment.kt
-import android.widget.SearchView
+import com.example.behealthy.model.data.Recipe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.behealthy.adapter.CardViewAdapter
-import com.example.behealthy.databinding.FragmentSavedRecipesBinding
-=======
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/java/com/example/behealthy/view/currentUser/UserRecipesFragment.kt
 import com.example.behealthy.databinding.FragmentUserRecipesBinding
-import com.example.behealthy.model.LocalUser
-import com.example.behealthy.model.Recipe
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 
@@ -37,7 +31,7 @@ open class UserRecipesFragment : Fragment(){
     private val binding get() = _binding!!
 
     companion object {
-        fun newInstance() = SavedRecipesFragment()
+        fun newInstance() = UserRecipesFragment()
     }
 
     override fun onCreateView(
@@ -52,7 +46,6 @@ open class UserRecipesFragment : Fragment(){
         return binding.root
     }
 
-<<<<<<< HEAD:BeHealthy/app/src/main/java/com/example/behealthy/view/user/UserRecipesFragment.kt
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -69,12 +62,6 @@ open class UserRecipesFragment : Fragment(){
         recipeRecyclerView.adapter = myAdapter
 
         EventChangeListener()
-
-=======
-    companion object {
-        @JvmStatic
-        fun newInstance() = UserRecipesFragment()
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c:BeHealthy/app/src/main/java/com/example/behealthy/view/currentUser/UserRecipesFragment.kt
     }
 
     fun EventChangeListener() {

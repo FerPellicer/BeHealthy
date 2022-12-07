@@ -1,7 +1,5 @@
 package com.example.behealthy.model.data
 
-import java.util.Arrays
-
 data class Recipe (var description : String ?= null,
                    var image : String ?= null,
                    var ingredients : String ?= null,

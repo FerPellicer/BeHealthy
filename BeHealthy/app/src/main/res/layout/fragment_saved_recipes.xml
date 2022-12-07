@@ -4,28 +4,14 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".view.user.SavedRecipesFragment"
+tools:context=".view.recipe.SavedRecipesFragment"
 android:background="@drawable/background2">
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-=======
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background1"
-    tools:context=".view.recipe.SavedRecipesFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:textSize="40sp"
-        android:text="SAVED RECIPES"
-        android:gravity="center">
-    </TextView>
->>>>>>> 7f93ae7f1f701b0127c83d3aab8cd25ef4fc198c
-
-    android:id="@+id/recycleRecipes"/>
+    tools:context=".view.recipe.SavedRecipesFragment"
+    android:id="@+id/recycleRecipes" />
 
 </FrameLayout>
