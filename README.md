@@ -131,3 +131,63 @@ cual se ha practicado a lo largo del curso.
 - Por último, para compartir el avance del proyecto, se empleará un repositorio de GitHub, donde los
 miembros tendrán disponible los avances que puedan realizar sus compañeros.
 
+
+
+
+
+
+## ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+
+- CODELABS 
+
+- UI RESPONSIVE —> https://developer.android.com/training/constraint-layout?hl=es-419
+
+- ESCRIBIR Y VER REGISTROS CON LogCat —> https://developer.android.com/studio/debug/am-logcat?hl=es-419
+
+- BOTONES REDONDOS —> https://medium.com/swlh/rounded-button-in-android-studios-fbd1ee0b3161
+
+- QUITAR ACTION TOOL BAR —> https://webplusvalencia.es/como-quitar-la-actionbar-toolbar-de-mi-aplicacion-android/
+
+- STORE USER PROFILE DATA IN FIREBASE —> https://www.youtube.com/watch?v=RiHGwJ_u27k
+
+- DISEÑAR TEMAS Y ESTILOS (PARA RECORDAR COMO CREAR TEMAS) —> https://www.youtube.com/watch?v=gRBGzALFKLg
+
+- INFLATE LAYOUTS —> https://jarroba.com/inflate-en-android-inflar-y-adjuntar-views/
+
+- FRAGMENTS —> https://www.youtube.com/watch?v=4r8FvGADzF4
+
+- SCROLL VIEW —> https://www.develou.com/scrollview-en-android/
+
+- SELECCIONAR UNA IMAGEN DE LA GALERÍA —> https://www.youtube.com/watch?v=EiQn3zVlPtQ
+
+- SUBIR IMÁGENES STORAGE FIREBASE —> https://firebase.google.com/docs/storage/android/upload-files
+
+- IMAGEN CIRCULAR —> https://www.youtube.com/watch?v=An-mS2oneCw
+
+- CAMBIAR COLOR APP_BAR_LAYOUT —> https://stackoverflow.com/questions/41379305/change-color-of-appbar
+
+- MENÚ HAMBURGUESA —> https://www.youtube.com/watch?v=VvVs99-_Urk
+
+- RECYCLER VIEW —> https://www.youtube.com/watch?v=vBxNDtyE_Co&ab_channel=BenO%27Brien
+
+- RECYCLER VIEW —> https://www.youtube.com/watch?v=J2nuk1Q_bNs
+
+- RECYCLER VIEW - CARDS —> https://www.youtube.com/watch?v=Ly0xwWlUpVM
+
+- MVVVM  —> https://www.youtube.com/watch?v=LHh2_TXBmS8
+
+- MVVVM  —> https://www.simplifiedcoding.net/firebase-authentication-using-mvvm/
+
+- PARTE 1 —> https://www.youtube.com/watch?v=hhhSMXi0R3E&t=5s
+
+- PARTE 2 —> https://www.youtube.com/watch?v=7FptmAjBdsA
+
+
+- CAMBIAR/QUITAR TÍTULO ACTION BAR —> https://www.youtube.com/watch?v=T4sN7gmmAkU
+- https://developer.android.com/guide/navigation/navigation-getting-started
+
+
+- NAVIGATION DRAWER AND BOTTOM NAV BAR —> https://stackoverflow.com/questions/70976692/using-both-navigation-drawer-and-bottom-navigation-navigation-drawers-checkab
+
+
+- GET FILE EXTENSION —> https://stackoverflow.com/questions/37951869/how-to-get-the-file-extension-in-android 
