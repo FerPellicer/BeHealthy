@@ -61,21 +61,35 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun changeUserImage(fileUri: Uri, fileName: String):  Resource<String> {
+    override fun changeUserImage(fileUri: Uri, fileName: String, uid: String):  Resource<String> {
 
-            return try {
-                val fileName = firestorage.reference.child(fileName)
+        return try {
+            var imageDonwloadUrl = ""
 
-                val result = fileName.putFile(fileUri).await()
-                val url = result.storage.downloadUrl.await()
-                url.toString()
+            //Log.e("Hola", "profileImages/${uid}/")
 
-                Log.e("URL", url.toString())
-                Resource.Success(url.toString())
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Resource.Failure(e.toString())
+            val fileName = firestorage.reference.child(fileName)
+
+            fileName.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
+                taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+                    imageDonwloadUrl = it.toString()
+                    Log.e("Url Imagen", imageDonwloadUrl)
+                    Log.i("Progile image", "Image uploaded successfully!")
+
+                    firestore.collection("users")
+                        .document(uid)
+                        .update("imageProfile", imageDonwloadUrl)
+
+                    Log.e("ViewModel", "Imagen Actualizada")
+                }
             }
+
+            Success("Success")
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Resource.Failure(e.toString())
+        }
 
     }
 

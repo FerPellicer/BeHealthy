@@ -23,6 +23,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.databinding.ActivityUserDataBinding
+import com.example.behealthy.model.utils.Compressor
+import com.example.behealthy.model.utils.Compressor.reduceImageSize
 import com.example.behealthy.viewModel.AuthViewModel
 import com.example.behealthy.viewModel.UserViewModel
 import com.example.fragments.data.Resource
@@ -36,8 +38,7 @@ class UserDataActivity : AppCompatActivity() {
     private val authViewModel: AuthViewModel by viewModels()
     private lateinit var userViewModel : UserViewModel
     private lateinit var uid : String
-
-    private var uri: String = ""
+    private var uri: Uri = Uri.parse("null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,18 +73,36 @@ class UserDataActivity : AppCompatActivity() {
 
     private fun changeImage() {
 
-        val fileUri = Uri.parse("uri")
-
-        val cR = this.contentResolver
-        val mime = MimeTypeMap.getSingleton()
-        val type = mime.getExtensionFromMimeType(cR.getType(fileUri))
-        val fileName = "profileImages/${uid}/${fileUri.lastPathSegment}.${type}"
-
-        Log.e("FileName", fileName)
+        if (uri.toString() != "null") {
+            // uri has been initialized
 
 
-        userViewModel.changeImage(fileUri, fileName)
-        Log.e("userurl", userViewModel.imageUrlFlow.toString())
+            uri = reduceImageSize(context = this, uri, quality = 20, angle = 90f)
+
+            Glide.with(this).asBitmap().load(uri)
+                .into(binding.profileImage)
+
+            val fileName = "profileImages/${uid}/${uri.lastPathSegment}"
+
+            userViewModel.changeImage(uri, fileName, uid)
+
+            userViewModel.imageUrlFlow.observe(this) {
+                if (this.toString() == "Success") {
+                    Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
+                }
+
+                else {
+                    Toast.makeText(this, "Se ha producido un error al actualizar la imagen." +
+                            "\nVuelva a intentarlo", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        }
+
+        else {
+            Toast.makeText(this, "Primero debe seleccionar una nueva imagen", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
@@ -158,7 +177,7 @@ class UserDataActivity : AppCompatActivity() {
     { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
-            uri = data.toString()
+            uri = result.data!!.data!!
             binding.profileImage.setImageURI(data)
         }
 

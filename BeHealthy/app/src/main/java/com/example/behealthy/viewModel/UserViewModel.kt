@@ -39,8 +39,8 @@ class UserViewModel @Inject constructor(
         _userUpdatedDataFlow.value = result
     }
 
-    fun changeImage(fileUri: Uri, fileName: String) = viewModelScope.launch{
-        val result = repository.changeUserImage(fileUri, fileName)
+    fun changeImage(fileUri: Uri, fileName: String, uid: String) {
+        val result = repository.changeUserImage(fileUri, fileName, uid)
         _imageUrlFlow.value = result
     }
 
