@@ -136,7 +136,7 @@ miembros tendrán disponible los avances que puedan realizar sus compañeros.
 
 
 
-## ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+## 8. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
 
 - CODELABS 
 
