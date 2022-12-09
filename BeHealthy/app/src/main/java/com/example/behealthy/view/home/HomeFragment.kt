@@ -68,6 +68,11 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        EventChangeListener()
+    }
+
     fun EventChangeListener() {
 
         db = FirebaseFirestore.getInstance()
@@ -83,7 +88,7 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
                 for (dc : DocumentChange in value?.documentChanges!!){
 
                     if(dc.type == DocumentChange.Type.ADDED){
-                        Log.e("lista", dc.document.toString())
+                        //Log.e("lista", dc.document.toString())
                         recipeArrayList.add(dc.document.toObject(Recipe::class.java))
                         recipesIds.add(dc.document.id)
                     }

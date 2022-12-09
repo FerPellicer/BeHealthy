@@ -7,22 +7,24 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.activity.viewModels
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.databinding.ActivitySlideMenuBinding
+import com.example.behealthy.view.home.HomeFragment
 import com.example.behealthy.viewModel.AuthViewModel
 import com.example.behealthy.viewModel.UserViewModel
 import com.example.fragments.data.Resource
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -64,6 +66,11 @@ class SlideMenuActivity : AppCompatActivity() {
 
         updateUserData()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUserData()
     }
 
     private fun updateUserData() {

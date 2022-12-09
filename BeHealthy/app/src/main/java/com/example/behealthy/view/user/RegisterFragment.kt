@@ -138,6 +138,8 @@ class RegisterFragment : Fragment() {
                             "name" to binding.name.text.toString(),
                             "surname" to binding.surname.text.toString(),
                             "userName" to binding.userName.text.toString(),
+                            "likesUser" to ArrayList<String>(),
+                            "saveRecipes" to ArrayList<String>(),
                             "imageProfile" to ""
                         )
 

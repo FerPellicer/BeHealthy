@@ -10,7 +10,6 @@ android:background="@drawable/background2">
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background1"
     tools:context=".view.recipe.SavedRecipesFragment"
     android:id="@+id/recycleRecipes" />
 

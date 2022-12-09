@@ -87,11 +87,13 @@ class UserDataActivity : AppCompatActivity() {
             userViewModel.changeImage(uri, fileName, uid)
 
             userViewModel.imageUrlFlow.observe(this) {
-                if (this.toString() == "Success") {
+
+                if (it.toString() == "Success(result=Success)") {
                     Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
                 }
 
                 else {
+                    Log.e("Error Imagen", this.toString())
                     Toast.makeText(this, "Se ha producido un error al actualizar la imagen." +
                             "\nVuelva a intentarlo", Toast.LENGTH_SHORT).show()
                 }

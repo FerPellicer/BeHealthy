@@ -53,7 +53,7 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
 
         val docRef = currentItem.user?.let { db.collection("users").document(it) }
         docRef?.get()?.addOnSuccessListener { documentSnapshot ->
-            Log.d("document", documentSnapshot.toString())
+            //Log.d("document", documentSnapshot.toString())
             var usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
             usuario.name?.let { Log.d("usuario1", it) }
 
@@ -65,7 +65,7 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
 
         val docRef2 = currentItem.user?.let { db.collection("users").document(firebaseAuth.currentUser?.uid.toString()) }
         docRef2?.get()?.addOnSuccessListener { documentSnapshot ->
-            Log.d("document", documentSnapshot.toString())
+            //Log.d("document", documentSnapshot.toString())
             var usuario2: LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
 
             if((usuario2.likesUser?.contains(recipesIds[original.indexOf(currentItem)]) == true)){
@@ -144,7 +144,7 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
                     "name" to usuario2.name,
                     "saveRecipes" to usuario2.saveRecipes,
                     "surname" to usuario2.surname,
-                    "userName" to usuario2.surname
+                    "userName" to usuario2.userName
                 )
 
                 db.collection("users").document(firebaseAuth.currentUser?.uid.toString()).set(user)

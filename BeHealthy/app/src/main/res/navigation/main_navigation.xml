@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_nav_home_to_nav_recipe"
             app:destination="@id/nav_recipe" />
+        <action
+            android:id="@+id/action_nav_home_self"
+            app:destination="@id/nav_home" />
     </fragment>
 
 
