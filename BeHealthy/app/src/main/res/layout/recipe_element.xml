@@ -3,7 +3,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.cardview.widget.CardView
@@ -52,7 +52,7 @@
 
             <TextView
                 android:id="@+id/recipe_name"
-                android:layout_width="180dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:text="Lasaña"
                 android:textAlignment="center"
@@ -60,7 +60,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/recipe_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/user_image"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="invisible"/>
 
             <ImageView
                 android:id="@+id/recipe_image"
@@ -86,6 +87,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_name"
                 app:srcCompat="@drawable/heart_icon" />
+
 
             <TextView
                 android:id="@+id/recipe_likes"
