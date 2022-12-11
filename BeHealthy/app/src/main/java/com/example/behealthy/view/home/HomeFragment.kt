@@ -2,7 +2,6 @@ package com.example.behealthy.view.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,16 +63,11 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
         recipeRecyclerView.adapter = myAdapter
 
-        EventChangeListener()
+        eventChangeListener()
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        EventChangeListener()
-    }
-
-    fun EventChangeListener() {
+    private fun eventChangeListener() {
 
         db = FirebaseFirestore.getInstance()
         db.collection("recipesData").
@@ -81,14 +75,12 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
             @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                 if (error != null){
-                    Log.e("FirestoreError", error.message.toString())
                     return
                 }
 
                 for (dc : DocumentChange in value?.documentChanges!!){
 
                     if(dc.type == DocumentChange.Type.ADDED){
-                        //Log.e("lista", dc.document.toString())
                         recipeArrayList.add(dc.document.toObject(Recipe::class.java))
                         recipesIds.add(dc.document.id)
                     }
@@ -105,6 +97,7 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
     }
 
     override fun onQueryTextChange(newText: String): Boolean {
+        myAdapter.initSearch(newText)
         myAdapter.filter(newText)
         return false
     }

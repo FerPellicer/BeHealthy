@@ -57,7 +57,7 @@ open class UserRecipesFragment : Fragment(){
 
         recipesIds = arrayListOf()
 
-        myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
+        myAdapter = CardViewAdapter(recipeArrayList, recipesIds, myAdapter)
 
         recipeRecyclerView.adapter = myAdapter
 

@@ -14,20 +14,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.model.data.LocalUser
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.auth.User
 import com.example.behealthy.model.data.Recipe
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<String>): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
+@Suppress("UNCHECKED_CAST")
+class CardViewAdapter(
+    recipeListParam: ArrayList<Recipe>,
+    private var recipesIds: ArrayList<String>
+
+): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private var recipeList: ArrayList<Recipe> = ArrayList()
     private var original: ArrayList<Recipe> = recipeListParam
-    private var recipesIds: ArrayList<String> = recipesIds
     private var listLikes: ArrayList<String> = ArrayList()
     private var listSaves: ArrayList<String> = ArrayList()
-    private lateinit var usuario : User
+    private var searchText: String = ""
+    private var searchActive: Boolean = false
     private var db : FirebaseFirestore = FirebaseFirestore.getInstance()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -53,8 +57,8 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
 
         val docRef = currentItem.user?.let { db.collection("users").document(it) }
         docRef?.get()?.addOnSuccessListener { documentSnapshot ->
-            //Log.d("document", documentSnapshot.toString())
-            var usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
+            Log.d("document", documentSnapshot.toString())
+            val usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
             usuario.name?.let { Log.d("usuario1", it) }
 
             viewHolder.itemUserName.text = usuario.userName
@@ -65,8 +69,8 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
 
         val docRef2 = currentItem.user?.let { db.collection("users").document(firebaseAuth.currentUser?.uid.toString()) }
         docRef2?.get()?.addOnSuccessListener { documentSnapshot ->
-            //Log.d("document", documentSnapshot.toString())
-            var usuario2: LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
+            Log.d("document", documentSnapshot.toString())
+            val usuario2: LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
 
             if((usuario2.likesUser?.contains(recipesIds[original.indexOf(currentItem)]) == true)){
                 viewHolder.itemHeart.setImageDrawable(getDrawable(context, R.drawable.heart_icon_red))
@@ -93,28 +97,23 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
                 viewHolder.itemLikes.text = currentItem.likes + " likes"
 
                 val user = hashMapOf(
-                    "email" to usuario2.email,
-                    "imageProfile" to usuario2.imageProfile,
-                    "likesUser" to usuario2.likesUser,
-                    "name" to usuario2.name,
-                    "saveRecipes" to usuario2.saveRecipes,
-                    "surname" to usuario2.surname,
-                    "userName" to usuario2.surname
+                    "likesUser" to usuario2.likesUser
                 )
 
                 val recipe = hashMapOf(
-                    "name" to currentItem.name,
-                    "description" to currentItem.description,
-                    "ingredients" to currentItem.ingredients,
-                    "image" to currentItem.image,
-                    "steps" to currentItem.steps,
-                    "likes" to currentItem.likes,
-                    "user" to currentItem.user
+                    "likes" to currentItem.likes
                 )
 
-                db.collection("users").document(firebaseAuth.currentUser?.uid.toString()).set(user)
+                db.collection("users").document(firebaseAuth.currentUser?.uid.toString()).update(
+                    user as Map<String, Any>
+                )
 
-                db.collection("recipesData").document(recipesIds[original.indexOf(currentItem)]).set(recipe)
+                db.collection("recipesData").document(recipesIds[original.indexOf(currentItem)]).update(
+                    recipe as Map<String, Any>
+                )
+
+                searchActive = true
+
             }
 
             if((usuario2.saveRecipes?.contains(recipesIds[original.indexOf(currentItem)]) == true)){
@@ -138,22 +137,20 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
                 }
 
                 val user = hashMapOf(
-                    "email" to usuario2.email,
-                    "imageProfile" to usuario2.imageProfile,
-                    "likesUser" to usuario2.likesUser,
-                    "name" to usuario2.name,
-                    "saveRecipes" to usuario2.saveRecipes,
-                    "surname" to usuario2.surname,
-                    "userName" to usuario2.userName
+                    "saveRecipes" to usuario2.saveRecipes
                 )
 
-                db.collection("users").document(firebaseAuth.currentUser?.uid.toString()).set(user)
+                db.collection("users").document(firebaseAuth.currentUser?.uid.toString()).update(
+                    user as Map<String, Any>
+                )
             }
 
-
+            if(searchActive) {
+                filter(searchText)
+                searchActive = false
+            }
 
         }
-
 
         viewHolder.itemImage.setOnClickListener {
             val bundle = Bundle()
@@ -163,6 +160,7 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
             Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_recipe, bundle)
                 .onClick(viewHolder.itemView)
 
+            searchActive = true
         }
 
     }
@@ -187,13 +185,15 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
     fun init() {
         recipeList = original.clone() as ArrayList<Recipe>
     }
-
     @SuppressLint("NotifyDataSetChanged")
     fun filter(strSearch: String) {
-        if (strSearch.isEmpty()) {
+
+        if (this.searchText.isEmpty()) {
             recipeList.clear()
             recipeList.addAll(original)
+            searchText = ""
         } else {
+            searchText = strSearch
             recipeList.clear()
             for (recipe in original) {
                 if (recipe.name!!.lowercase().contains(strSearch)) {
@@ -204,6 +204,10 @@ class CardViewAdapter(recipeListParam: ArrayList<Recipe>, recipesIds: ArrayList<
         }
 
         notifyDataSetChanged()
+    }
+
+    fun initSearch (newText: String) {
+        this.searchText = newText
     }
 
 }
