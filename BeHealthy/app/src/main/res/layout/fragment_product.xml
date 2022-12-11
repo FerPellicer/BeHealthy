@@ -78,7 +78,7 @@
                     android:id="@+id/face"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/green_face"
+                    tools:background="@drawable/smile_face"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/productRating"
                     app:layout_constraintStart_toStartOf="parent"

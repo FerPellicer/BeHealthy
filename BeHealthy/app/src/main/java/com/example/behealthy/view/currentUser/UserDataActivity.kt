@@ -16,6 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -43,6 +44,8 @@ class UserDataActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val bundle : Bundle? = intent.extras
+
         binding = ActivityUserDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -68,6 +71,24 @@ class UserDataActivity : AppCompatActivity() {
 
         binding.profileImage.setOnClickListener { changeProfileImage() }
         binding.updateImage.setOnClickListener { changeImage() }
+
+
+        // Cargar fragmento en función del destino seleccionado por el usuario
+        when(bundle?.getString("nav")) {
+
+            "nav_userProfile" -> {
+                navController.navigate(R.id.action_userProfile_self)
+            }
+
+            "nav_saved_recipes" -> {
+                navController.navigate(R.id.action_userProfile_to_user_saved_recipes)
+            }
+
+            "nav_user_recipes" -> {
+                navController.navigate(R.id.action_userProfile_to_user_recipes)
+            }
+
+        }
 
     }
 

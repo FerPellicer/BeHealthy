@@ -66,6 +66,57 @@ class SlideMenuActivity : AppCompatActivity() {
 
         updateUserData()
 
+        configureNavViewDestination(navView)
+
+    }
+
+    private fun configureNavViewDestination(navView: NavigationView) {
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+
+
+                R.id.nav_user_profile -> {
+                    val intent = Intent(this, UserDataActivity::class.java)
+                    intent.putExtra("nav", "nav_user_profile")
+                    startActivity(intent)
+                    false
+                }
+
+
+                R.id.nav_saved_recipes -> {
+
+                    val intent = Intent(this, UserDataActivity::class.java)
+                    intent.putExtra("nav", "nav_saved_recipes")
+                    startActivity(intent)
+                    false
+                }
+
+
+                R.id.nav_user_recipes -> {
+
+                    val intent = Intent(this, UserDataActivity::class.java)
+                    intent.putExtra("nav", "nav_user_recipes")
+                    startActivity(intent)
+                    false
+                }
+
+                R.id.share -> {
+                    val shareIntent = Intent(Intent.ACTION_SEND)
+                    shareIntent.type = "text/plain"
+                    val message: String = "\uD83E\uDD2A¿QUE QUÉ ESSSSS BEHEALTHY?\uD83E\uDD2A " +
+                            "\nLa app para mejorar tu estilo de vida\n" +
+                            "¡Descárgala gratis aquí! \uD83D\uDC47"
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, message)
+                    startActivity(shareIntent)
+                    false
+                }
+
+                else -> {
+
+                    false
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -126,6 +177,5 @@ class SlideMenuActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 
 }

@@ -59,7 +59,7 @@
     <activity
         android:id="@+id/nav_user_data"
         android:name="com.example.behealthy.view.UserDataActivity"
-        android:label="h"
+        android:label="User data"
         tools:layout="@layout/activity_user_data">
     </activity>
     <fragment

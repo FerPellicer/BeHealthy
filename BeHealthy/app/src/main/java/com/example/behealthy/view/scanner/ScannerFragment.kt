@@ -135,7 +135,7 @@ class ScannerFragment : Fragment() {
         when (requestCode) {
             CAMERA_REQUEST_CODE -> {
                 if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(activity, "Necesitas los permisos de la cámara para escaner un código qr", Toast.LENGTH_SHORT)
+                    Toast.makeText(activity, "Necesitas los permisos de la cámara para escanear un código qr", Toast.LENGTH_SHORT)
                 }
             }
         }
@@ -172,6 +172,7 @@ class ScannerFragment : Fragment() {
                     }
                 }
             }
+
     }
 
 
