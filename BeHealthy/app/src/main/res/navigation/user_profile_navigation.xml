@@ -8,12 +8,22 @@
         android:id="@+id/userProfile"
         android:name="com.example.behealthy.view.currentUser.UserProfileFragment"
         android:label="fragment_user_profile"
-        tools:layout="@layout/fragment_user_profile" />
+        tools:layout="@layout/fragment_user_profile" >
+        <action
+            android:id="@+id/action_userProfile_to_user_saved_recipes"
+            app:destination="@id/user_saved_recipes" />
+        <action
+            android:id="@+id/action_userProfile_to_user_recipes"
+            app:destination="@id/user_recipes" />
+        <action
+            android:id="@+id/action_userProfile_self"
+            app:destination="@id/userProfile" />
+    </fragment>
 
     <fragment
         android:id="@+id/user_saved_recipes"
         android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
-        android:label="fragment_user_profile"
+        android:label="fragment_user_saved_recipes"
         tools:layout="@layout/fragment_saved_recipes" />
 
     <fragment

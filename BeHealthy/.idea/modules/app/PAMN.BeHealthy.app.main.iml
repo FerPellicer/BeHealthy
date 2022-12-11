@@ -45,7 +45,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c040ddb1bac5d6c44a68c9f710c4d6e2/transformed/jetified-lifecycle-viewmodel-ktx-2.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/786b99ee88fb3c4ce4481797cfd63425/transformed/jetified-hilt-android-2.44-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/fd27886c717af5f190d1b7d2be3f6ecf/transformed/material-1.7.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/b1ff95ba987fb59c3f9f18cd033ee559/transformed/jetified-dagger-android-support-2.17-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/42c6e477490d206e853bf74c91e20866/transformed/jetified-dagger-android-support-2.17-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a23e3128f03fe26cb47cadfed631a8a7/transformed/jetified-car-ui-lib-2.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d5b3d82854fc8d54386399c558896653/transformed/preference-1.1.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/acffc7bb831d7c3e44d96856378a6205/transformed/appcompat-1.5.1-api.jar</arg>
@@ -135,10 +135,10 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/a92ae8e7baf50f520aba9b9ed51e86b6/transformed/jetified-tracing-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d3c752e794f536b7f0d6e99444a30db7/transformed/jetified-startup-runtime-1.1.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/ae68612243e6940c1aeb1f6b5018e452/transformed/constraintlayout-2.1.4-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/6f940c1c6cdaab64788f42d91954a082/transformed/jetified-grpc-protobuf-lite-1.48.1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/74d08f6cbcfd8c8d3fec93f5d0f52adf/transformed/jetified-grpc-android-1.48.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b72d944b0c0240aaf1b7e765ae77ed5e/transformed/jetified-grpc-okhttp-1.48.1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/74d08f6cbcfd8c8d3fec93f5d0f52adf/transformed/jetified-grpc-android-1.48.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d9f3993ee490d03092d106466f35aaef/transformed/jetified-grpc-core-1.48.1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/6f940c1c6cdaab64788f42d91954a082/transformed/jetified-grpc-protobuf-lite-1.48.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/aee94521c35c645f6ce48f4cc820c0ae/transformed/jetified-grpc-api-1.48.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/083938cc56e255e65507fc4c928c477a/transformed/jetified-error_prone_annotations-2.14.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f67b85ff7187e55aee060749c6f43c25/transformed/jetified-firebase-annotations-16.1.0.jar</arg>
@@ -157,8 +157,8 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0ab4efe2a605e8e685e053ca5fe5ddf8/transformed/jetified-disklrucache-4.13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/03cd68055f22de7477e895c33d62a810/transformed/jetified-annotations-4.13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/efe64209a5b1414325f21face49f32d6/transformed/jetified-core-3.3.3.jar</arg>
-                <arg>$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-32/android.jar</arg>
-                <arg>$USER_HOME$/AppData/Local/Android/Sdk/build-tools/30.0.3/core-lambda-stubs.jar</arg>
+                <arg>$USER_HOME$/Library/Android/sdk/platforms/android-32/android.jar</arg>
+                <arg>$USER_HOME$/Library/Android/sdk/build-tools/30.0.3/core-lambda-stubs.jar</arg>
               </args>
             </stringArg>
             <stringArg name="destination" arg="$MODULE_DIR$/../../../app/build/tmp/kotlin-classes/debug" />

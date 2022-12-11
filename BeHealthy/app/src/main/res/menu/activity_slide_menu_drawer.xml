@@ -6,16 +6,22 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_user_data"
+            android:id="@+id/nav_user_profile"
             android:icon="@drawable/user_icon"
             android:title="Perfil" />
 
         <item
-            android:id="@+id/nav_saved"
+            android:id="@+id/nav_saved_recipes"
             android:icon="@drawable/save_icon"
             android:title="Guardados" />
+
         <item
-            android:id="@+id/nav_scan"
+            android:id="@+id/nav_user_recipes"
+            android:icon="@drawable/recipe_icon"
+            android:title="Mis Recetas" />
+
+        <item
+            android:id="@+id/share"
             android:icon="@drawable/share_icon"
             android:title="Compartir" />
     </group>

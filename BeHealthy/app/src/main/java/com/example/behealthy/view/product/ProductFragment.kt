@@ -1,13 +1,22 @@
 package com.example.behealthy.view.product
 
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffColorFilter
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.behealthy.databinding.FragmentProductBinding
 import com.example.behealthy.model.data.Product
+import com.example.behealthy.model.utils.FaceColor.getHexColor
+import com.example.behealthy.model.utils.FaceColor.get_face_drawable
+
 
 class ProductFragment : Fragment() {
 
@@ -37,12 +46,17 @@ class ProductFragment : Fragment() {
 
         binding.productName.text = product.name
         binding.productBrand.text = product.productBrand
-        binding.productRating.text = product.productRating
+        binding.productRating.text = product.productRating + "/100"
         binding.ingredients.text = product.ingredients
 
 
         // Cargar imagen del producto
         Glide.with(requireContext()).asBitmap().load(product.image).into(binding.productImage)
+
+
+
+
+        binding.face.setImageDrawable(get_face_drawable(requireContext(), product.productRating!!))
 
 
 
