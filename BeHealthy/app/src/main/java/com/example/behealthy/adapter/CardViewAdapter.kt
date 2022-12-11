@@ -60,8 +60,6 @@ class CardViewAdapter(
 
         val currentItem = recipeList[i]
 
-        Log.e("own", this.ownRecipes.toString())
-
         if(this.ownRecipes){
 
             viewHolder.itemDelete.visibility = View.VISIBLE;
@@ -77,7 +75,7 @@ class CardViewAdapter(
             viewHolder.itemModify.setOnClickListener {
                 val docRef = currentItem.user?.let { db.collection("recipesData").document(recipesIds[original.indexOf(currentItem)]) }
                 docRef?.get()?.addOnSuccessListener { documentSnapshot ->
-                    Log.d("document", documentSnapshot.toString())
+
                     val recipe : Recipe = documentSnapshot.toObject(Recipe::class.java)!!
 
                     recipe.idRecipe = recipesIds[original.indexOf(currentItem)]

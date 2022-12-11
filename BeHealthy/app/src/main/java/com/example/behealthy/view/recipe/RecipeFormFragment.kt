@@ -16,6 +16,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
+import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentRecipeFormBinding
 import com.example.behealthy.model.data.Recipe
 import com.google.android.gms.tasks.OnFailureListener
@@ -40,7 +42,6 @@ class RecipeFormFragment : Fragment() {
     companion object {
         fun newInstance() = RecipeFormFragment()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

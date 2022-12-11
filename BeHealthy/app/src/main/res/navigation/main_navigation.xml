@@ -41,7 +41,11 @@
         android:id="@+id/nav_recipe_form"
         android:name="com.example.behealthy.view.recipe.RecipeFormFragment"
         android:label="AddRecipe"
-        tools:layout="@layout/fragment_recipe_form"/>
+        tools:layout="@layout/fragment_recipe_form">
+        <action
+            android:id="@+id/action_nav_recipe_form_self"
+            app:destination="@id/nav_recipe_form" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_saved"
