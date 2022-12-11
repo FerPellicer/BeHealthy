@@ -61,6 +61,8 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
         myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
 
+        myAdapter.ownRecipes(false, false)
+
         recipeRecyclerView.adapter = myAdapter
 
     }
@@ -69,6 +71,7 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
         super.onResume()
         svSearch.setQuery("", false)
 
+        myAdapter.clear()
         eventChangeListener()
     }
 

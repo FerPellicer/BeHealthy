@@ -60,6 +60,8 @@ class SavedRecipesFragment : Fragment() {
 
         myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
 
+        myAdapter.ownRecipes(false, true)
+
         recipeRecyclerView.adapter = myAdapter
 
     }
@@ -67,6 +69,7 @@ class SavedRecipesFragment : Fragment() {
     override fun onResume(){
         super.onResume()
 
+        myAdapter.clear()
         eventChangeListener()
     }
 

@@ -61,10 +61,18 @@ open class UserRecipesFragment : Fragment(){
 
         recipeRecyclerView.adapter = myAdapter
 
+        myAdapter.ownRecipes(true, false)
+
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        myAdapter.clear()
         eventChangeListener()
     }
 
-    fun eventChangeListener() {
+    private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
         db.collection("recipesData").addSnapshotListener(object : EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")

@@ -1,14 +1,21 @@
 package com.example.behealthy.adapter
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
+import android.opengl.Visibility
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.constraintlayout.widget.ConstraintSet.VISIBLE
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -34,6 +41,10 @@ class CardViewAdapter(
     private var searchText: String = ""
     private var searchActive: Boolean = false
     private var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var ownRecipes : Boolean = false
+    private var saveRecipes : Boolean = false
+    private var auxList : ArrayList<String> = ArrayList()
+    private var auxList1 : ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
@@ -45,10 +56,41 @@ class CardViewAdapter(
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
         val currentItem = recipeList[i]
+
+        Log.e("own", this.ownRecipes.toString())
+
+        if(this.ownRecipes){
+
+            viewHolder.itemDelete.visibility = View.VISIBLE;
+            viewHolder.itemModify.visibility = View.VISIBLE;
+
+            viewHolder.itemDelete.setOnClickListener {
+
+                db.collection("recipesData").document(recipesIds[original.indexOf(currentItem)]).delete()
+                    .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+                removeItem(i)
+            }
+
+            viewHolder.itemModify.setOnClickListener {
+                val docRef = currentItem.user?.let { db.collection("recipesData").document(recipesIds[original.indexOf(currentItem)]) }
+                docRef?.get()?.addOnSuccessListener { documentSnapshot ->
+                    Log.d("document", documentSnapshot.toString())
+                    val recipe : Recipe = documentSnapshot.toObject(Recipe::class.java)!!
+
+                }
+            }
+
+        }else{
+
+            viewHolder.itemDelete.visibility = View.INVISIBLE;
+            viewHolder.itemModify.visibility = View.INVISIBLE;
+
+        }
 
         val context = viewHolder.itemView.context
 
@@ -132,6 +174,11 @@ class CardViewAdapter(
                     listSaves.remove(recipesIds[original.indexOf(currentItem)])
                     usuario2.saveRecipes = listSaves
 
+                    if(saveRecipes){
+                        removeItem(i)
+                        viewHolder.itemSave.setImageDrawable(getDrawable(context, R.drawable.save_icon_black))
+                    }
+
                 }else{
                     viewHolder.itemSave.setImageDrawable(getDrawable(context, R.drawable.save_icon_black))
                     listSaves.add(recipesIds[original.indexOf(currentItem)])
@@ -180,6 +227,8 @@ class CardViewAdapter(
         val itemUserImage: ImageView = itemView.findViewById(R.id.user_image)
         val itemLikes: TextView = itemView.findViewById(R.id.recipe_likes)
         val itemUserName: TextView = itemView.findViewById(R.id.user_name)
+        val itemDelete: ImageView = itemView.findViewById(R.id.delete)
+        val itemModify: ImageView = itemView.findViewById(R.id.modify)
     }
 
     fun init() {
@@ -209,6 +258,23 @@ class CardViewAdapter(
 
     fun initSearch (newText: String) {
         this.searchText = newText
+    }
+
+    fun ownRecipes(option1 : Boolean, option2 : Boolean){
+        this.ownRecipes = option1
+        this.saveRecipes = option2
+    }
+
+    fun clear() {
+        original.clear()
+        recipeList.clear()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun removeItem(position: Int) {
+        recipeList.removeAt(position)
+        original.removeAt(position)
+        notifyDataSetChanged()
     }
 
 

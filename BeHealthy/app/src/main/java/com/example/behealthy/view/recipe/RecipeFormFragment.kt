@@ -63,11 +63,15 @@ class RecipeFormFragment : Fragment() {
 
         if (notEmptyFields()) {
             createRecipe()
+
+            Toast.makeText(activity, "Receta Creada", Toast.LENGTH_SHORT).show()
+
         } else {
             Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
         }
 
     }
+
 
     private fun createRecipe() {
 
@@ -78,7 +82,7 @@ class RecipeFormFragment : Fragment() {
             val fileName = storageRef.child("recipesImages/${fileUri.lastPathSegment}")
             fileName.downloadUrl
             fileName.putFile(fileUri)
-                .addOnSuccessListener { taskSnapshot ->
+                .addOnSuccessListener {
 
                     fileName.downloadUrl.addOnSuccessListener {
 
@@ -103,6 +107,7 @@ class RecipeFormFragment : Fragment() {
                 .addOnFailureListener(OnFailureListener { e ->
                     Log.e("Recipe image", e.message.toString())
                 })
+
         }
     }
 
