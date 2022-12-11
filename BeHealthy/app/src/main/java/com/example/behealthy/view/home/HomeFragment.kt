@@ -70,6 +70,9 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
     override fun onResume(){
         super.onResume()
         svSearch.setQuery("", false)
+
+        myAdapter.clear()
+        eventChangeListener()
     }
 
     private fun eventChangeListener() {

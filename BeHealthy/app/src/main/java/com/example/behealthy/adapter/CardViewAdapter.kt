@@ -209,4 +209,9 @@ class CardViewAdapter(
         this.searchText = newText
     }
 
+    fun clear () {
+        recipeList.clear()
+        original.clear()
+    }
+
 }
