@@ -159,8 +159,6 @@ class CardViewAdapter(
 
             Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_recipe, bundle)
                 .onClick(viewHolder.itemView)
-
-            searchActive = true
         }
 
     }
@@ -185,6 +183,7 @@ class CardViewAdapter(
     fun init() {
         recipeList = original.clone() as ArrayList<Recipe>
     }
+
     @SuppressLint("NotifyDataSetChanged")
     fun filter(strSearch: String) {
 

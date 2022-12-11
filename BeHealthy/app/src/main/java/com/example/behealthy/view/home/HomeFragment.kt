@@ -67,6 +67,11 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
     }
 
+    override fun onResume(){
+        super.onResume()
+        svSearch.setQuery("", false)
+    }
+
     private fun eventChangeListener() {
 
         db = FirebaseFirestore.getInstance()
