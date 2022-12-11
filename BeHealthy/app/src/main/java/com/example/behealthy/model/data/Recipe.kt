@@ -6,7 +6,8 @@ data class Recipe (var description : String ?= null,
                    var likes : String ?= null,
                    var name : String ?= null,
                    var steps : String ?= null,
-                   var user : String ?= null) : java.io.Serializable {
+                   var user : String ?= null,
+                   var idRecipe : String ?= null) : java.io.Serializable {
 
 }
 

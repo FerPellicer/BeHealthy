@@ -43,8 +43,6 @@ class CardViewAdapter(
     private var db : FirebaseFirestore = FirebaseFirestore.getInstance()
     private var ownRecipes : Boolean = false
     private var saveRecipes : Boolean = false
-    private var auxList : ArrayList<String> = ArrayList()
-    private var auxList1 : ArrayList<String> = ArrayList()
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
@@ -81,6 +79,17 @@ class CardViewAdapter(
                 docRef?.get()?.addOnSuccessListener { documentSnapshot ->
                     Log.d("document", documentSnapshot.toString())
                     val recipe : Recipe = documentSnapshot.toObject(Recipe::class.java)!!
+
+                    recipe.idRecipe = recipesIds[original.indexOf(currentItem)]
+
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("recipeArg", recipe)
+
+
+
+                    Navigation.createNavigateOnClickListener(R.id.action_user_recipes_to_recipeFormFragment, bundle)
+                        .onClick(viewHolder.itemView)
 
                 }
             }

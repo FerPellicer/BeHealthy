@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.example.behealthy.databinding.FragmentRecipeFormBinding
+import com.example.behealthy.model.data.Recipe
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -54,17 +55,46 @@ class RecipeFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.acceptForm.setOnClickListener { finishForm() }
-        binding.updatePhoto.setOnClickListener { changeRecipeImage() }
+        if(arguments?.isEmpty == false){
+
+            var recipeArgs : Recipe = arguments?.getSerializable("recipeArg") as Recipe
+            binding.acceptForm.setOnClickListener { finishFormUpdate(recipeArgs) }
+            binding.updatePhoto.setOnClickListener { changeRecipeImage() }
+
+            binding.ingredientsFormRecipe.setText(recipeArgs.ingredients)
+            binding.description.setText(recipeArgs.description)
+            binding.name.setText(recipeArgs.name)
+            binding.formSteps.setText(recipeArgs.steps)
+
+        }else{
+
+            binding.acceptForm.setOnClickListener { finishForm() }
+            binding.updatePhoto.setOnClickListener { changeRecipeImage() }
+
+        }
+
     }
 
     private fun finishForm() {
 
 
         if (notEmptyFields()) {
-            createRecipe()
 
+            createRecipe()
             Toast.makeText(activity, "Receta Creada", Toast.LENGTH_SHORT).show()
+
+        } else {
+            Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun finishFormUpdate(recipeArg : Recipe) {
+
+
+        if (notEmptyFields()) {
+            updateRecipe(recipeArg)
+            Toast.makeText(activity, "Receta modificada", Toast.LENGTH_SHORT).show()
 
         } else {
             Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
@@ -98,7 +128,8 @@ class RecipeFormFragment : Fragment() {
 
                         db.collection("recipesData").add(recipe)
                             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-                            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+                            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e)
+                            }
 
                         Log.i("Recipe image", "Image uploaded successfully!")
                     }
@@ -107,7 +138,71 @@ class RecipeFormFragment : Fragment() {
                 .addOnFailureListener(OnFailureListener { e ->
                     Log.e("Recipe image", e.message.toString())
                 })
+        }
+    }
 
+    private fun updateRecipe(recipeArg : Recipe) {
+
+        if (uri != "default") {
+
+            val storageRef = storage.reference
+            val fileUri = Uri.parse(uri)
+            val fileName = storageRef.child("recipesImages/${fileUri.lastPathSegment}")
+            fileName.downloadUrl
+            fileName.putFile(fileUri)
+                .addOnSuccessListener {
+
+                    fileName.downloadUrl.addOnSuccessListener {
+
+                        Log.e("image", it.toString())
+
+                        var recipe = hashMapOf(
+                            "name" to "",
+                            "description" to "",
+                            "ingredients" to "",
+                            "image" to "",
+                            "steps" to "",
+                            "likes" to "",
+                            "user" to (firebaseAuth.currentUser?.uid)
+                        )
+
+                        if(it != null){
+                            recipe = hashMapOf(
+                                "name" to binding.name.text.toString(),
+                                "description" to binding.description.text.toString(),
+                                "ingredients" to binding.ingredientsFormRecipe.text.toString(),
+                                "image" to it.toString(),
+                                "steps" to binding.formSteps.text.toString(),
+                                "likes" to "0",
+                                "user" to (firebaseAuth.currentUser?.uid)
+                            )
+                        }else{
+                            recipe = hashMapOf(
+                                "name" to binding.name.text.toString(),
+                                "description" to binding.description.text.toString(),
+                                "ingredients" to binding.ingredientsFormRecipe.text.toString(),
+                                "image" to recipeArg.image,
+                                "steps" to binding.formSteps.text.toString(),
+                                "likes" to recipeArg.likes,
+                                "user" to recipeArg.user
+                            )
+                        }
+
+
+                        recipeArg.idRecipe?.let { it1 ->
+                            db.collection("recipesData").document(it1).update(recipe as Map<String, Any>)
+                                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e)
+                                }
+                        }
+
+                        Log.i("Recipe image", "Image uploaded successfully!")
+                    }
+                }
+
+                .addOnFailureListener(OnFailureListener { e ->
+                    Log.e("Recipe image", e.message.toString())
+                })
         }
     }
 

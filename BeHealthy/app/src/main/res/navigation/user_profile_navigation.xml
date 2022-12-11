@@ -20,7 +20,16 @@
         android:id="@+id/user_recipes"
         android:name="com.example.behealthy.view.currentUser.UserRecipesFragment"
         android:label="user_recipes"
-        tools:layout="@layout/fragment_user_recipes" />
+        tools:layout="@layout/fragment_user_recipes" >
+        <action
+            android:id="@+id/action_user_recipes_to_recipeFormFragment"
+            app:destination="@id/recipeFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeFormFragment"
+        android:name="com.example.behealthy.view.recipe.RecipeFormFragment"
+        android:label="fragment_recipe_form"
+        tools:layout="@layout/fragment_recipe_form" />
 
 
 </navigation>
