@@ -15,13 +15,14 @@ import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.model.data.LocalUser
 import com.example.behealthy.model.data.Recipe
+import com.example.behealthy.view.recipe.SavedRecipesFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 @Suppress("UNCHECKED_CAST")
 class CardViewAdapter(
     recipeListParam: ArrayList<Recipe>,
-    private var recipesIds: ArrayList<String>
+    private var recipesIds: ArrayList<String>,
 
 ): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
 
@@ -130,6 +131,7 @@ class CardViewAdapter(
                     viewHolder.itemSave.setImageDrawable(getDrawable(context, R.drawable.save_icon))
                     listSaves.remove(recipesIds[original.indexOf(currentItem)])
                     usuario2.saveRecipes = listSaves
+
                 }else{
                     viewHolder.itemSave.setImageDrawable(getDrawable(context, R.drawable.save_icon_black))
                     listSaves.add(recipesIds[original.indexOf(currentItem)])
@@ -209,9 +211,5 @@ class CardViewAdapter(
         this.searchText = newText
     }
 
-    fun clear () {
-        recipeList.clear()
-        original.clear()
-    }
 
 }

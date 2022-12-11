@@ -63,15 +63,12 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
         recipeRecyclerView.adapter = myAdapter
 
-        eventChangeListener()
-
     }
 
     override fun onResume(){
         super.onResume()
         svSearch.setQuery("", false)
 
-        myAdapter.clear()
         eventChangeListener()
     }
 

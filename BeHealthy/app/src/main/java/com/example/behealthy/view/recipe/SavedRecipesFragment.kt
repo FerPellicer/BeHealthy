@@ -62,11 +62,15 @@ class SavedRecipesFragment : Fragment() {
 
         recipeRecyclerView.adapter = myAdapter
 
-        EventChangeListener()
-
     }
 
-    fun EventChangeListener() {
+    override fun onResume(){
+        super.onResume()
+
+        eventChangeListener()
+    }
+
+    fun eventChangeListener() {
 
         val docRef2 =  db.collection("users").document(firebaseAuth.currentUser?.uid.toString())
         docRef2.get().addOnSuccessListener { documentSnapshot ->

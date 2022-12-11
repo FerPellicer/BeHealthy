@@ -57,14 +57,14 @@ open class UserRecipesFragment : Fragment(){
 
         recipesIds = arrayListOf()
 
-        myAdapter = CardViewAdapter(recipeArrayList, recipesIds, myAdapter)
+        myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
 
         recipeRecyclerView.adapter = myAdapter
 
-        EventChangeListener()
+        eventChangeListener()
     }
 
-    fun EventChangeListener() {
+    fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
         db.collection("recipesData").addSnapshotListener(object : EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")
