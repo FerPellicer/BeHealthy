@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -16,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,13 +24,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.databinding.ActivityUserDataBinding
-import com.example.behealthy.model.utils.Compressor
 import com.example.behealthy.model.utils.Compressor.reduceImageSize
 import com.example.behealthy.viewModel.AuthViewModel
 import com.example.behealthy.viewModel.UserViewModel
 import com.example.fragments.data.Resource
 import dagger.hilt.android.AndroidEntryPoint
-
 @AndroidEntryPoint
 class UserDataActivity : AppCompatActivity() {
 
@@ -76,21 +74,52 @@ class UserDataActivity : AppCompatActivity() {
         // Cargar fragmento en función del destino seleccionado por el usuario
         when(bundle?.getString("nav")) {
 
-            "nav_userProfile" -> {
-                navController.navigate(R.id.action_userProfile_self)
-            }
-
             "nav_saved_recipes" -> {
-                navController.navigate(R.id.action_userProfile_to_user_saved_recipes)
+                navController.navigate(R.id.action_user_profile_to_user_saved_recipes)
+
             }
 
             "nav_user_recipes" -> {
-                navController.navigate(R.id.action_userProfile_to_user_recipes)
+                navController.navigate(R.id.action_user_profile_to_user_recipes)
             }
 
         }
 
+        configureNavViewDestination(navView, navController)
+
+
     }
+
+
+
+    private fun configureNavViewDestination(navView: BottomNavigationView, navController: NavController) {
+        navView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+
+                R.id.user_profile -> {
+                    navController.navigate(R.id.user_profile)
+                    true
+                }
+
+
+                R.id.user_saved_recipes -> {
+                    navController.navigate(R.id.user_saved_recipes)
+                    true
+                }
+
+
+                R.id.user_recipes -> {
+                    navController.navigate(R.id.user_recipes)
+                    true
+                }
+
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
 
     private fun changeImage() {
 
@@ -214,3 +243,4 @@ class UserDataActivity : AppCompatActivity() {
     }
 
 }
+

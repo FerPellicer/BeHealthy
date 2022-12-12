@@ -1,31 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation2"
-    app:startDestination="@id/userProfile">
+    app:startDestination="@id/user_profile">
     <fragment
-        android:id="@+id/userProfile"
+        android:id="@+id/user_profile"
         android:name="com.example.behealthy.view.currentUser.UserProfileFragment"
         android:label="fragment_user_profile"
         tools:layout="@layout/fragment_user_profile" >
         <action
-            android:id="@+id/action_userProfile_to_user_saved_recipes"
-            app:destination="@id/user_saved_recipes" />
-        <action
-            android:id="@+id/action_userProfile_to_user_recipes"
+            android:id="@+id/action_user_profile_to_user_recipes"
             app:destination="@id/user_recipes" />
         <action
-            android:id="@+id/action_userProfile_self"
-            app:destination="@id/userProfile" />
+            android:id="@+id/action_user_profile_to_user_saved_recipes"
+            app:destination="@id/user_saved_recipes" />
+        <action
+            android:id="@+id/action_user_profile_self"
+            app:destination="@id/user_profile" />
     </fragment>
 
     <fragment
         android:id="@+id/user_saved_recipes"
         android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
         android:label="fragment_user_saved_recipes"
-        tools:layout="@layout/fragment_saved_recipes" />
-
+        tools:layout="@layout/fragment_saved_recipes" >
+        <action
+            android:id="@+id/action_user_saved_recipes_to_user_profile3"
+            app:destination="@id/user_profile" />
+        <action
+            android:id="@+id/action_user_saved_recipes_to_user_recipes"
+            app:destination="@id/user_recipes" />
+        <action
+            android:id="@+id/action_user_saved_recipes_to_user_recipes2"
+            app:destination="@id/user_recipes" />
+    </fragment>
     <fragment
         android:id="@+id/user_recipes"
         android:name="com.example.behealthy.view.currentUser.UserRecipesFragment"
