@@ -16,24 +16,27 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.navigation.Navigation
-import com.example.behealthy.R
+import com.bumptech.glide.Glide
 import com.example.behealthy.databinding.FragmentRecipeFormBinding
 import com.example.behealthy.model.data.Recipe
-import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 
-
 class RecipeFormFragment : Fragment() {
-    private var uri: String = ""
+    private var uri: Uri = Uri.parse("default")
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var storage: FirebaseStorage = Firebase.storage
 
+    private var name : String = ""
+    private var description : String = ""
+    private var ingredients : String = ""
+    private var steps : String = ""
+    private var imageActive : Boolean = false
+    private var modify : Boolean = false
     private var _binding: FragmentRecipeFormBinding? = null
 
     private val binding get() = _binding!!
@@ -47,10 +50,33 @@ class RecipeFormFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentRecipeFormBinding.inflate(inflater, container, false)
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        Log.e("Resume", this.imageActive.toString())
+
+        if(! this.modify){
+            if(this.imageActive){
+                Log.e("Resume", this.ingredients)
+
+                this.imageActive = false
+                binding.ingredientsFormRecipe.setText(this.ingredients)
+                binding.description.setText(this.description)
+                binding.name.setText(this.name)
+                binding.formSteps.setText(this.steps)
+            }else {
+                binding.ingredientsFormRecipe.setText("")
+                binding.description.setText("")
+                binding.name.setText("")
+                binding.formSteps.setText("")
+            }
+        }
+
     }
 
 
@@ -58,19 +84,22 @@ class RecipeFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(arguments?.isEmpty == false){
 
-            var recipeArgs : Recipe = arguments?.getSerializable("recipeArg") as Recipe
+            this.modify = true
+
+            val recipeArgs : Recipe = arguments?.getSerializable("recipeArg") as Recipe
             binding.acceptForm.setOnClickListener { finishFormUpdate(recipeArgs) }
-            binding.updatePhoto.setOnClickListener { changeRecipeImage() }
+            binding.updatePhoto.setOnClickListener { changeRecipeImage(false) }
 
             binding.ingredientsFormRecipe.setText(recipeArgs.ingredients)
             binding.description.setText(recipeArgs.description)
             binding.name.setText(recipeArgs.name)
             binding.formSteps.setText(recipeArgs.steps)
+            activity?.let { Glide.with(it).asBitmap().load(recipeArgs.image).into(binding.showPhoto) }
 
         }else{
 
             binding.acceptForm.setOnClickListener { finishForm() }
-            binding.updatePhoto.setOnClickListener { changeRecipeImage() }
+            binding.updatePhoto.setOnClickListener { changeRecipeImage(true) }
 
         }
 
@@ -96,7 +125,6 @@ class RecipeFormFragment : Fragment() {
         if (notEmptyFields()) {
             updateRecipe(recipeArg)
             Toast.makeText(activity, "Receta modificada", Toast.LENGTH_SHORT).show()
-
         } else {
             Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
         }
@@ -106,10 +134,10 @@ class RecipeFormFragment : Fragment() {
 
     private fun createRecipe() {
 
-        if (uri != "default") {
+        if (uri.toString() != "default") {
 
             val storageRef = storage.reference
-            val fileUri = Uri.parse(uri)
+            val fileUri = Uri.parse(uri.toString())
             val fileName = storageRef.child("recipesImages/${fileUri.lastPathSegment}")
             fileName.downloadUrl
             fileName.putFile(fileUri)
@@ -136,18 +164,18 @@ class RecipeFormFragment : Fragment() {
                     }
                 }
 
-                .addOnFailureListener(OnFailureListener { e ->
+                .addOnFailureListener { e ->
                     Log.e("Recipe image", e.message.toString())
-                })
+                }
         }
     }
 
     private fun updateRecipe(recipeArg : Recipe) {
 
-        if (uri != "default") {
+        if (uri.toString() != "default") {
 
             val storageRef = storage.reference
-            val fileUri = Uri.parse(uri)
+            val fileUri = Uri.parse(uri.toString())
             val fileName = storageRef.child("recipesImages/${fileUri.lastPathSegment}")
             fileName.downloadUrl
             fileName.putFile(fileUri)
@@ -157,15 +185,7 @@ class RecipeFormFragment : Fragment() {
 
                         Log.e("image", it.toString())
 
-                        var recipe = hashMapOf(
-                            "name" to "",
-                            "description" to "",
-                            "ingredients" to "",
-                            "image" to "",
-                            "steps" to "",
-                            "likes" to "",
-                            "user" to (firebaseAuth.currentUser?.uid)
-                        )
+                        val recipe: HashMap<String, String?>
 
                         if(it != null){
                             recipe = hashMapOf(
@@ -201,22 +221,30 @@ class RecipeFormFragment : Fragment() {
                     }
                 }
 
-                .addOnFailureListener(OnFailureListener { e ->
+                .addOnFailureListener { e ->
                     Log.e("Recipe image", e.message.toString())
-                })
+                }
         }
     }
 
     private fun notEmptyFields(): Boolean {
-        return binding.name.text.toString().isNotEmpty()
+        return (binding.name.text.toString().isNotEmpty()
                 && binding.description.text.toString().isNotEmpty()
                 && binding.ingredients.text.toString().isNotEmpty()
                 && binding.formSteps.text.toString().isNotEmpty()
-                && binding.updatePhoto.toString().isNotEmpty()
-                && binding.updatePhoto.toString().isNotEmpty()
+                && (! uri.toString().equals("default") || this.modify) )
+
     }
 
-    private fun changeRecipeImage() {
+    private fun changeRecipeImage(option : Boolean) {
+
+        this.imageActive = option
+        this.name = binding.name.text.toString()
+        this.description  = binding.description.text.toString()
+        this.ingredients = binding.ingredientsFormRecipe.text.toString()
+        this.steps  = binding.formSteps.text.toString()
+
+        Log.e("Update", this.ingredients)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             when (PackageManager.PERMISSION_DENIED) {
@@ -258,7 +286,7 @@ class RecipeFormFragment : Fragment() {
     { result ->
         if (result.resultCode == RESULT_OK) {
             val data = result.data?.data
-            uri = data.toString()
+            uri = result.data!!.data!!
             binding.showPhoto.setImageURI(data)
         }
 
