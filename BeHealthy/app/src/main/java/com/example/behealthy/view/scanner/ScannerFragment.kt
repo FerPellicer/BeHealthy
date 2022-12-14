@@ -2,6 +2,8 @@ package com.example.behealthy.view.scanner
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.HandlerThread
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.text.isDigitsOnly
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -24,7 +27,9 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ScannerFragment : Fragment() {
+    private var canShowMessage: Boolean = true
     private var _binding: FragmentScannerBinding? = null
+    private val handler = Handler()
 
     private val binding get() = _binding!!
 
@@ -46,7 +51,7 @@ class ScannerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentScannerBinding.inflate(inflater, container, false)
 
@@ -127,6 +132,7 @@ class ScannerFragment : Fragment() {
     }
 
 
+    @Deprecated("Deprecated in Java")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -135,7 +141,7 @@ class ScannerFragment : Fragment() {
         when (requestCode) {
             CAMERA_REQUEST_CODE -> {
                 if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(activity, "Necesitas los permisos de la cámara para escanear un código qr", Toast.LENGTH_SHORT)
+                    Toast.makeText(activity, "Necesitas los permisos de la cámara para escanear un código qr", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -147,32 +153,46 @@ class ScannerFragment : Fragment() {
 
         Log.e("Producto", "id: " + productId)
 
+        if (productId.isDigitsOnly()) {
+
             productViewModel.productDataSnapshot(productId)
             productViewModel.productDataSnapshot.observe(viewLifecycleOwner) {
                 it?.let {
-                    when (it) {
-                        is Resource.Success -> {
 
-                            product =  it.result.result.toObject(Product::class.java)!!
+                    try {
+                        product = it.result.result.toObject(Product::class.java)!!
 
-                            binding.productName
-                                .setText(product.name)
+                        binding.productName.text = product.name
 
-                            var imagen = product.image
+                        val imagen = product.image
 
-                            Glide.with(this).asBitmap().load(imagen)
-                                .into(binding.productImage)
+                        Glide.with(this).asBitmap().load(imagen)
+                            .into(binding.productImage)
 
-                            binding.product.visibility = View.VISIBLE
+                        binding.product.visibility = View.VISIBLE
+
+                    } catch (e: Exception) {
+
+                        binding.product.visibility = View.INVISIBLE
+
+                        if (canShowMessage) {
+                            Toast.makeText(
+                                activity, "Ese producto no se encuentra en nuestra " +
+                                        "base de datos", Toast.LENGTH_SHORT
+                            ).show()
+                            canShowMessage = false
+
+                            // Habilitar tras 1s poder mostrar el mensaje
+                            handler.postDelayed({
+                                this.canShowMessage = true
+                            }, 1000)
                         }
 
-                        else -> {
-                            Log.e("", "ELSE")
-                        }
+
                     }
                 }
             }
-
+        }
     }
 
 

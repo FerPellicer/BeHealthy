@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/nav_saved"
-        android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
+        android:name="com.example.behealthy.view.currentUser.SavedRecipesFragment"
         android:label="SavedRecipes"
         tools:layout="@layout/fragment_saved_recipes"/>
 

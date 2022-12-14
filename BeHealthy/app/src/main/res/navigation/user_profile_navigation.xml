@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/user_saved_recipes"
-        android:name="com.example.behealthy.view.recipe.SavedRecipesFragment"
+        android:name="com.example.behealthy.view.currentUser.SavedRecipesFragment"
         android:label="fragment_user_saved_recipes"
         tools:layout="@layout/fragment_saved_recipes" >
         <action

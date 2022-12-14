@@ -1,4 +1,4 @@
-package com.example.behealthy.view.recipe
+package com.example.behealthy.view.currentUser
 
 import android.annotation.SuppressLint
 import android.os.Bundle
