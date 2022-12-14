@@ -183,7 +183,7 @@ miembros tendrán disponible los avances que puedan realizar sus compañeros.
 
 El equipo de trabajo se ha adaptado bastante bien a los sprints y a sus historias de usuario, teniendo índices de 0.8 y 0.9 en su realización. Una explicación para este suceso en los sprints se debe a que los integrantes del grupo han trabajado también los fines de semana y lectivos, lo cual no se ha estado contando en los sprints. 
 
-Además otro factore que ha ayudado a obtener estos valores, ha sido la organización del equipo en trello, la cual nos ha agilizado el trabajo y el tiempo que se ha empleado por los integrantes ha sido mucho menor.
+Además otro factor que ha ayudado a obtener estos valores, ha sido la organización del equipo en trello, la cual nos ha agilizado el trabajo y el tiempo que se ha empleado por los integrantes en la organización se ha reducido considerablemente.
 
 
 ## 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
