@@ -15,8 +15,11 @@ Emmanuel Peña Mendoza
 - 3. Dinámica de trabajo
 - 4. Scrum: Organización del equipo
 - 5. Pila de producto
-- 6. Pila de Sprint
-- 7. Herramientas que se utilizarán en este trabajo
+- 6. Pila de Sprint 1
+- 7. Pila de Sprint 2
+- 8. Pila de Sprint 3
+- 9. Herramientas que se utilizarán en este trabajo
+- 10. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
 
 
 ## 1. ¿Qué es BeHealthy?
@@ -163,7 +166,7 @@ Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las s
 
 Estas historias dan un total de 15.5 puntos, de los 18 puntos disponibles. Dejando así un margen para imprevistos en el proyecto para su futura entrega y presentación.
 
-## 7. Herramientas que se utilizarán en este trabajo
+## 9. Herramientas que se utilizarán en este trabajo
 
 La importancia de las herramientas que se utilizan en un trabajo de desarrollo de software es fundamental tener claro las herramientas que usaremos a lo largo de este proyecto.
 
@@ -179,7 +182,7 @@ miembros tendrán disponible los avances que puedan realizar sus compañeros.
 
 
 
-## 8. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+## 10. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
 
 - CODELABS 
 
