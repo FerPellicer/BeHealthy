@@ -9,13 +9,13 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
@@ -33,12 +33,12 @@ class RecipeFormFragment : Fragment() {
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var storage: FirebaseStorage = Firebase.storage
 
-    private var name : String = ""
-    private var description : String = ""
-    private var ingredients : String = ""
-    private var steps : String = ""
-    private var imageActive : Boolean = false
-    private var modify : Boolean = false
+    private var name: String = ""
+    private var description: String = ""
+    private var ingredients: String = ""
+    private var steps: String = ""
+    private var imageActive: Boolean = false
+    private var modify: Boolean = false
     private var _binding: FragmentRecipeFormBinding? = null
 
     private val binding get() = _binding!!
@@ -62,8 +62,8 @@ class RecipeFormFragment : Fragment() {
 
         Log.e("Resume", this.imageActive.toString())
 
-        if(! this.modify){
-            if(this.imageActive){
+        if (!this.modify) {
+            if (this.imageActive) {
                 Log.e("Resume", this.ingredients)
 
                 this.imageActive = false
@@ -71,7 +71,7 @@ class RecipeFormFragment : Fragment() {
                 binding.description.setText(this.description)
                 binding.name.setText(this.name)
                 binding.formSteps.setText(this.steps)
-            }else {
+            } else {
                 binding.ingredientsFormRecipe.setText("")
                 binding.description.setText("")
                 binding.name.setText("")
@@ -84,11 +84,11 @@ class RecipeFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(arguments?.isEmpty == false){
+        if (arguments?.isEmpty == false) {
 
             this.modify = true
 
-            val recipeArgs : Recipe = arguments?.getSerializable("recipeArg") as Recipe
+            val recipeArgs: Recipe = arguments?.getSerializable("recipeArg") as Recipe
             binding.acceptForm.setOnClickListener { finishFormUpdate(recipeArgs) }
             binding.updatePhoto.setOnClickListener { changeRecipeImage(false) }
 
@@ -96,9 +96,11 @@ class RecipeFormFragment : Fragment() {
             binding.description.setText(recipeArgs.description)
             binding.name.setText(recipeArgs.name)
             binding.formSteps.setText(recipeArgs.steps)
-            activity?.let { Glide.with(it).asBitmap().load(recipeArgs.image).into(binding.showPhoto) }
+            activity?.let {
+                Glide.with(it).asBitmap().load(recipeArgs.image).into(binding.showPhoto)
+            }
 
-        }else{
+        } else {
 
             binding.acceptForm.setOnClickListener { finishForm() }
             binding.updatePhoto.setOnClickListener { changeRecipeImage(true) }
@@ -118,7 +120,7 @@ class RecipeFormFragment : Fragment() {
 
     }
 
-    private fun finishFormUpdate(recipeArg : Recipe) {
+    private fun finishFormUpdate(recipeArg: Recipe) {
 
 
         if (notEmptyFields()) {
@@ -160,13 +162,25 @@ class RecipeFormFragment : Fragment() {
                             .addOnSuccessListener {
                                 Log.d(TAG, "DocumentSnapshot successfully written!")
 
-                                Toast.makeText(activity, "Receta subida correctamente", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    activity,
+                                    "Receta subida correctamente",
+                                    Toast.LENGTH_SHORT
+                                ).show()
 
-                                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_slide_menu)
+                                Navigation.findNavController(
+                                    requireActivity(),
+                                    R.id.nav_host_fragment_content_slide_menu
+                                )
                                     .navigate(R.id.nav_home)
                             }
-                            .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e)
-                                Toast.makeText(activity, "Fallo al crear la receta", Toast.LENGTH_SHORT).show()
+                            .addOnFailureListener { e ->
+                                Log.w(TAG, "Error writing document", e)
+                                Toast.makeText(
+                                    activity,
+                                    "Fallo al crear la receta",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
 
 
@@ -182,7 +196,7 @@ class RecipeFormFragment : Fragment() {
         }
     }
 
-    private fun updateRecipe(recipeArg : Recipe) {
+    private fun updateRecipe(recipeArg: Recipe) {
 
         if (uri.toString() != "default") {
 
@@ -199,7 +213,7 @@ class RecipeFormFragment : Fragment() {
 
                         val recipe: HashMap<String, String?>
 
-                        if(it != null){
+                        if (it != null) {
                             recipe = hashMapOf(
                                 "name" to binding.name.text.toString(),
                                 "description" to binding.description.text.toString(),
@@ -209,7 +223,7 @@ class RecipeFormFragment : Fragment() {
                                 "likes" to "0",
                                 "user" to (firebaseAuth.currentUser?.uid)
                             )
-                        }else{
+                        } else {
                             recipe = hashMapOf(
                                 "name" to binding.name.text.toString(),
                                 "description" to binding.description.text.toString(),
@@ -223,9 +237,16 @@ class RecipeFormFragment : Fragment() {
 
 
                         recipeArg.idRecipe?.let { it1 ->
-                            db.collection("recipesData").document(it1).update(recipe as Map<String, Any>)
-                                .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
-                                .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e)
+                            db.collection("recipesData").document(it1)
+                                .update(recipe as Map<String, Any>)
+                                .addOnSuccessListener {
+                                    Log.d(
+                                        TAG,
+                                        "DocumentSnapshot successfully written!"
+                                    )
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w(TAG, "Error writing document", e)
                                 }
                         }
 
@@ -244,17 +265,17 @@ class RecipeFormFragment : Fragment() {
                 && binding.description.text.toString().isNotEmpty()
                 && binding.ingredients.text.toString().isNotEmpty()
                 && binding.formSteps.text.toString().isNotEmpty()
-                && (! uri.toString().equals("default") || this.modify) )
+                && (!uri.toString().equals("default") || this.modify))
 
     }
 
-    private fun changeRecipeImage(option : Boolean) {
+    private fun changeRecipeImage(option: Boolean) {
 
         this.imageActive = option
         this.name = binding.name.text.toString()
-        this.description  = binding.description.text.toString()
+        this.description = binding.description.text.toString()
         this.ingredients = binding.ingredientsFormRecipe.text.toString()
-        this.steps  = binding.formSteps.text.toString()
+        this.steps = binding.formSteps.text.toString()
 
         Log.e("Update", this.ingredients)
 

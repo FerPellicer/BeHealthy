@@ -1,11 +1,10 @@
 package com.example.behealthy.view.recipe
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.behealthy.databinding.FragmentRecipeDataBinding
 import com.example.behealthy.model.data.LocalUser
@@ -14,19 +13,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class RecipeDataFragment : Fragment() {
     private var _binding: FragmentRecipeDataBinding? = null
-    private var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+    private var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     private val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentRecipeDataBinding.inflate(inflater, container, false)
 
@@ -41,11 +35,12 @@ class RecipeDataFragment : Fragment() {
         val docRef = recipe.user?.let { db.collection("users").document(it) }
         docRef?.get()?.addOnSuccessListener { documentSnapshot ->
             //Log.d("document", documentSnapshot.toString())
-            var usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
+            val usuario: LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
             //usuario.name?.let { Log.d("usuario1", it) }
 
             binding.userName.text = "@" + usuario.userName
-            Glide.with(requireContext()).asBitmap().load(usuario.imageProfile).into(binding.userImage)
+            Glide.with(requireContext()).asBitmap().load(usuario.imageProfile)
+                .into(binding.userImage)
         }
 
         Glide.with(requireContext()).asBitmap().load(recipe.image).into(binding.recipeImage)

@@ -13,7 +13,6 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.MimeTypeMap
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -21,9 +20,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentRegisterBinding
+import com.example.behealthy.model.utils.Compressor
 import com.example.behealthy.view.SlideMenuActivity
 import com.example.behealthy.viewModel.AuthViewModel
-import com.example.fragments.data.await
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -44,9 +43,7 @@ class RegisterFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private var uri: String = ""
-
-    private var imageUrl = ""
+    private var uri: Uri = Uri.parse("default")
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -120,66 +117,105 @@ class RegisterFragment : Fragment() {
 
     private fun createUser() {
 
-        firebaseAuth.createUserWithEmailAndPassword(
-            binding.email.text.toString(),
-            binding.password.text.toString()
-        )
-            .addOnCompleteListener { result ->
-                if (result.isSuccessful) {
-
-                    val currentUser = firebaseAuth.currentUser
-
-                    if (currentUser != null) {
-
-                        uploadImage(currentUser.uid)
-
-                        val userInfo = hashMapOf(
-                            "email" to binding.email.text.toString(),
-                            "name" to binding.name.text.toString(),
-                            "surname" to binding.surname.text.toString(),
-                            "userName" to binding.userName.text.toString(),
-                            "likesUser" to ArrayList<String>(),
-                            "saveRecipes" to ArrayList<String>(),
-                            "imageProfile" to ""
-                        )
-
-                        db.collection("users").document(currentUser.uid)
-                            .set(userInfo)
-                            .addOnSuccessListener {
-
-                                Log.d(TAG, "DocumentSnapshot added with ID: ${currentUser.uid}")
+        if (uri.toString().equals("default")) {
+            Toast.makeText(activity, "Debe seleccionar una foto de perfil", Toast.LENGTH_SHORT)
+                .show()
+        } else {
 
 
-                                Log.i("User", "User created successfully")
-                                Toast.makeText(
-                                    activity, "Usuario creado correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+            Toast.makeText(activity, "Creando usuario", Toast.LENGTH_SHORT).show()
 
-                                authViewModel.loginUser(
-                                    binding.email.text.toString(),
-                                    binding.password.text.toString()
-                                )
+            firebaseAuth.createUserWithEmailAndPassword(
+                binding.email.text.toString(),
+                binding.password.text.toString()
+            )
+                .addOnCompleteListener { result ->
+                    if (result.isSuccessful) {
 
-                                val intent = Intent(activity, SlideMenuActivity::class.java)
-                                startActivity(intent)
+                        val currentUser = firebaseAuth.currentUser
 
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error adding document", e)
-                            }
+                        if (currentUser != null) {
+
+
+                            val userInfo = hashMapOf(
+                                "email" to binding.email.text.toString(),
+                                "name" to binding.name.text.toString(),
+                                "surname" to binding.surname.text.toString(),
+                                "userName" to binding.userName.text.toString(),
+                                "likesUser" to ArrayList<String>(),
+                                "saveRecipes" to ArrayList<String>(),
+                                "imageProfile" to ""
+                            )
+
+                            db.collection("users").document(currentUser.uid)
+                                .set(userInfo)
+                                .addOnSuccessListener {
+
+                                    Log.d(TAG, "DocumentSnapshot added with ID: ${currentUser.uid}")
+
+
+                                    Log.i("User", "User created successfully")
+
+                                    authViewModel.loginUser(
+                                        binding.email.text.toString(),
+                                        binding.password.text.toString()
+                                    )
+
+                                    val fileName = storage.reference
+                                        .child("profileImages/${currentUser.uid}/${uri.lastPathSegment}")
+
+                                    uri = Compressor.reduceImageSize(
+                                        context = requireContext(),
+                                        uri,
+                                        quality = 20,
+                                        angle = 90f
+                                    )
+                                    fileName.putFile(uri).addOnSuccessListener { taskSnapshot ->
+                                        taskSnapshot.storage.downloadUrl.addOnSuccessListener {
+
+                                            Log.i("Progile image", "Image uploaded successfully!")
+
+                                            Toast.makeText(
+                                                activity, "Usuario creado correctamente",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+
+                                            db.collection("users").document(currentUser.uid)
+                                                .update("imageProfile", it.toString())
+                                                .addOnCompleteListener {
+
+                                                    val intent = Intent(
+                                                        activity,
+                                                        SlideMenuActivity::class.java
+                                                    )
+                                                    startActivity(intent)
+                                                    this.requireActivity().finish()
+                                                }
+
+                                        }
+                                    }
+
+                                        .addOnFailureListener(OnFailureListener { e ->
+                                            Log.e("Progile image", e.message.toString())
+                                        })
+
+
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w(TAG, "Error adding document", e)
+                                }
+                        }
+
+
+                    } else {
+                        Log.e("User", "Failed trying to create new user")
+                        Toast.makeText(
+                            activity, "Se ha producido un error al intentar" +
+                                    "crear el usuario", Toast.LENGTH_SHORT
+                        ).show()
                     }
-
-
-                } else {
-                    Log.e("User", "Failed trying to create new user")
-                    Toast.makeText(
-                        activity, "Se ha producido un error al intentar" +
-                                "crear el usuario", Toast.LENGTH_SHORT
-                    ).show()
                 }
-            }
-
+        }
 
     }
 
@@ -231,7 +267,7 @@ class RegisterFragment : Fragment() {
     { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
-            uri = data.toString()
+            uri = result.data!!.data!!
             binding.profileImage.setImageURI(data)
         }
 
@@ -259,7 +295,7 @@ class RegisterFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 for (user in result) {
-                    Log.e("", user.data.get("userName").toString())
+
                     if (binding.userName.text.toString() == user.data.get("userName").toString()) {
                         used = 1
                         break
@@ -271,36 +307,6 @@ class RegisterFragment : Fragment() {
             }
 
         return used == 0
-    }
-
-
-    private fun uploadImage(uid: String) {
-
-        if (uri != "default") {
-
-            val storageRef = storage.reference
-            val fileUri = Uri.parse(uri)
-
-
-            val cR = requireContext().contentResolver
-            val mime = MimeTypeMap.getSingleton()
-            val type = mime.getExtensionFromMimeType(cR.getType(fileUri))
-            val fileName = storageRef.child("profileImages/${uid}/${fileUri.lastPathSegment}.${type}")
-
-
-            fileName.putFile(fileUri).addOnSuccessListener { taskSnapshot ->
-                    taskSnapshot.storage.downloadUrl.addOnSuccessListener {
-                        val imageDonwloadUrl = it.toString()
-                        Log.e("Url Imagen", imageDonwloadUrl)
-                        Log.i("Progile image", "Image uploaded successfully!")
-                    }
-                }
-
-                .addOnFailureListener(OnFailureListener { e ->
-                    Log.e("Progile image", e.message.toString())
-                })
-        }
-
     }
 
 

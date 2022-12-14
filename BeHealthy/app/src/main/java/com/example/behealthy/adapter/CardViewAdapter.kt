@@ -25,8 +25,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 class CardViewAdapter(
     recipeListParam: ArrayList<Recipe>,
     private var recipesIds: ArrayList<String>,
+    activityContext: String,
 
-): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
+    ): RecyclerView.Adapter<CardViewAdapter.ViewHolder>() {
 
     private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
     private var recipeList: ArrayList<Recipe> = ArrayList()
@@ -38,6 +39,8 @@ class CardViewAdapter(
     private var db : FirebaseFirestore = FirebaseFirestore.getInstance()
     private var ownRecipes : Boolean = false
     private var saveRecipes : Boolean = false
+
+    private val activityContext: String = activityContext // Para controlar el navigation según la actividad
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
 
@@ -208,8 +211,21 @@ class CardViewAdapter(
 
             bundle.putSerializable("itemInfo", currentItem)
 
-            Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_recipe, bundle)
-                .onClick(viewHolder.itemView)
+
+            when(this.activityContext) {
+
+                "homeFragment" -> Navigation.createNavigateOnClickListener(R.id.action_nav_home_to_nav_recipe, bundle)
+                    .onClick(viewHolder.itemView)
+
+                "savedRecipesFragment" -> Navigation.createNavigateOnClickListener(R.id.action_user_saved_recipes_to_recipeDataFragment2, bundle)
+                    .onClick(viewHolder.itemView)
+
+                "userRecipesFragment" -> Navigation.createNavigateOnClickListener(R.id.action_user_recipes_to_recipeDataFragment2, bundle)
+                    .onClick(viewHolder.itemView)
+            }
+
+
+
         }
 
     }

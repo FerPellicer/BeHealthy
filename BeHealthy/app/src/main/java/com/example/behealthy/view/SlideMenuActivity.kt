@@ -9,8 +9,6 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -19,7 +17,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.bumptech.glide.Glide
 import com.example.behealthy.R
 import com.example.behealthy.databinding.ActivitySlideMenuBinding
-import com.example.behealthy.view.home.HomeFragment
 import com.example.behealthy.viewModel.AuthViewModel
 import com.example.behealthy.viewModel.UserViewModel
 import com.example.fragments.data.Resource
@@ -127,7 +124,7 @@ class SlideMenuActivity : AppCompatActivity() {
     private fun updateUserData() {
 
 
-        val x = userViewModel.userData()
+        userViewModel.userData()
         userViewModel.userDataFlow.observe(this) {
             it?.let {
                 when (it) {
@@ -135,15 +132,15 @@ class SlideMenuActivity : AppCompatActivity() {
                         Log.e("Error", "Failed traying to download user data")
                     }
                     is Resource.Success -> {
-                        var imagen = it.result?.get("imageProfile")
+                        val imagen = it.result?.get("imageProfile")
                         Glide.with(this).asBitmap().load(imagen)
                             .into(findViewById(R.id.menu_profile_image))
 
-                        binding.navView.findViewById<TextView>(R.id.menu_user_name)
-                            .setText(it.result?.get("name").toString())
+                        binding.navView.findViewById<TextView>(R.id.menu_user_name).text =
+                            it.result?.get("name").toString()
 
-                        binding.navView.findViewById<TextView>(R.id.menu_username)
-                            .setText("@" + it.result?.get("userName").toString())
+                        binding.navView.findViewById<TextView>(R.id.menu_username).text =
+                            "@" + it.result?.get("userName").toString()
 
                     }
                     else -> {}

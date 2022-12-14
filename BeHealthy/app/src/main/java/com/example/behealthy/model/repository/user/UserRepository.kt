@@ -1,7 +1,6 @@
 package com.example.behealthy.model.repository.user
 
 import android.net.Uri
-import android.text.BoringLayout
 import com.example.fragments.data.Resource
 import com.google.firebase.auth.FirebaseUser
 

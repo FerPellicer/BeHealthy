@@ -11,12 +11,10 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -28,21 +26,23 @@ import com.example.behealthy.model.utils.Compressor.reduceImageSize
 import com.example.behealthy.viewModel.AuthViewModel
 import com.example.behealthy.viewModel.UserViewModel
 import com.example.fragments.data.Resource
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
 class UserDataActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityUserDataBinding
 
     private val authViewModel: AuthViewModel by viewModels()
-    private lateinit var userViewModel : UserViewModel
-    private lateinit var uid : String
+    private lateinit var userViewModel: UserViewModel
+    private lateinit var uid: String
     private var uri: Uri = Uri.parse("null")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val bundle : Bundle? = intent.extras
+        val bundle: Bundle? = intent.extras
 
         binding = ActivityUserDataBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -72,7 +72,7 @@ class UserDataActivity : AppCompatActivity() {
 
 
         // Cargar fragmento en función del destino seleccionado por el usuario
-        when(bundle?.getString("nav")) {
+        when (bundle?.getString("nav")) {
 
             "nav_saved_recipes" -> {
                 navController.navigate(R.id.action_user_profile_to_user_saved_recipes)
@@ -91,8 +91,10 @@ class UserDataActivity : AppCompatActivity() {
     }
 
 
-
-    private fun configureNavViewDestination(navView: BottomNavigationView, navController: NavController) {
+    private fun configureNavViewDestination(
+        navView: BottomNavigationView,
+        navController: NavController
+    ) {
         navView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
 
@@ -132,27 +134,27 @@ class UserDataActivity : AppCompatActivity() {
             Glide.with(this).asBitmap().load(uri)
                 .into(binding.profileImage)
 
-            val fileName = "profileImages/${uid}/${uri.lastPathSegment}"
+            val fileName = "profileImages//${uri.lastPathSegment}"
 
             userViewModel.changeImage(uri, fileName, uid)
 
             userViewModel.imageUrlFlow.observe(this) {
 
                 if (it.toString() == "Success(result=Success)") {
-                    Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT).show()
-                }
-
-                else {
+                    Toast.makeText(this, "Imagen actualizada correctamente", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
                     Log.e("Error Imagen", this.toString())
-                    Toast.makeText(this, "Se ha producido un error al actualizar la imagen." +
-                            "\nVuelva a intentarlo", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this, "Se ha producido un error al actualizar la imagen." +
+                                "\nVuelva a intentarlo", Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
 
-        }
-
-        else {
-            Toast.makeText(this, "Primero debe seleccionar una nueva imagen", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Primero debe seleccionar una nueva imagen", Toast.LENGTH_SHORT)
+                .show()
         }
 
 
@@ -169,12 +171,11 @@ class UserDataActivity : AppCompatActivity() {
                     }
                     is Resource.Success -> {
 
-                        var imagen = it.result?.get("imageProfile")
+                        val imagen = it.result?.get("imageProfile")
                         Glide.with(this).asBitmap().load(imagen)
                             .into(binding.profileImage)
 
-                        binding.userNameHeader
-                            .setText(it.result?.get("name").toString())
+                        binding.userNameHeader.text = it.result?.get("name").toString()
 
                     }
                     else -> {}

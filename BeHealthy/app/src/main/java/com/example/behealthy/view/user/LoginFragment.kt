@@ -17,7 +17,6 @@ import com.example.fragments.data.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
@@ -63,19 +62,22 @@ class LoginFragment : Fragment() {
                     when (it) {
                         is Resource.Failure -> {
                             Log.e("Error", "No se ha iniciado sesión")
-                            Toast.makeText(requireActivity(), "El correo o la contraseña son incorrectos",
-                                Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                requireActivity(), "El correo o la contraseña son incorrectos",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                         is Resource.Success -> {
                             Log.e("Succes", "Se ha iniciado sesión")
 
                             Toast.makeText(
                                 activity, "Se ha iniciado correctamente",
-                                Toast.LENGTH_SHORT)
+                                Toast.LENGTH_SHORT
+                            )
 
                             val intent = Intent(activity, SlideMenuActivity::class.java)
                             startActivity(intent)
-                            getActivity()?.finish()
+                            activity?.finish()
                         }
                         else -> {}
                     }

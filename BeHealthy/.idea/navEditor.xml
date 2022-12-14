@@ -529,35 +529,52 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="recipeFormFragment">
+                  <entry key="recipeDataFragment2">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="239" />
-                            <option name="y" value="370" />
+                            <option name="x" value="731" />
+                            <option name="y" value="136" />
                           </Point>
                         </option>
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="userProfile">
+                  <entry key="recipeFormFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-404" />
-                            <option name="y" value="17" />
+                            <option name="x" value="500" />
+                            <option name="y" value="837" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="user_profile">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-196" />
+                            <option name="y" value="-103" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_userProfile_to_user_recipes">
+                            <entry key="action_user_profile_self">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
-                            <entry key="action_userProfile_to_user_saved_recipes">
+                            <entry key="action_user_profile_to_user_recipes">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_user_profile_to_user_saved_recipes">
                               <value>
                                 <LayoutPositions />
                               </value>
@@ -576,6 +593,20 @@
                             <option name="y" value="368" />
                           </Point>
                         </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_user_recipes_to_recipeDataFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_user_recipes_to_recipeFormFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
                       </LayoutPositions>
                     </value>
                   </entry>
@@ -584,9 +615,33 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="12" />
+                            <option name="x" value="298" />
+                            <option name="y" value="-132" />
                           </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_user_saved_recipes_to_recipeDataFragment2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_user_saved_recipes_to_user_profile3">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_user_saved_recipes_to_user_recipes">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="action_user_saved_recipes_to_user_recipes2">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
                         </option>
                       </LayoutPositions>
                     </value>

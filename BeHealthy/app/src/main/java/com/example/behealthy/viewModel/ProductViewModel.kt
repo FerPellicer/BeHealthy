@@ -13,13 +13,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProductViewModel @Inject constructor(private val repository: ProductRepositoryImpl) : ViewModel() {
+class ProductViewModel @Inject constructor(private val repository: ProductRepositoryImpl) :
+    ViewModel() {
 
     private val _productData = MutableLiveData<Resource<MutableMap<String, Any>?>?>(null)
     val product_Data: LiveData<Resource<MutableMap<String, Any>?>?> = _productData
 
-    private val _productDataSnapshot = MutableLiveData<Resource.Success<Task<DocumentSnapshot>>>(null)
-    val productDataSnapshot: LiveData<Resource.Success<Task<DocumentSnapshot>>> = _productDataSnapshot
+    private val _productDataSnapshot =
+        MutableLiveData<Resource.Success<Task<DocumentSnapshot>>>(null)
+    val productDataSnapshot: LiveData<Resource.Success<Task<DocumentSnapshot>>> =
+        _productDataSnapshot
 
 
     fun productData(id: String) = viewModelScope.launch {

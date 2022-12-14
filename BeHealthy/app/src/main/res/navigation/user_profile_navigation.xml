@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_user_saved_recipes_to_user_recipes2"
             app:destination="@id/user_recipes" />
+        <action
+            android:id="@+id/action_user_saved_recipes_to_recipeDataFragment2"
+            app:destination="@id/recipeDataFragment2" />
     </fragment>
     <fragment
         android:id="@+id/user_recipes"
@@ -44,12 +47,20 @@
         <action
             android:id="@+id/action_user_recipes_to_recipeFormFragment"
             app:destination="@id/recipeFormFragment" />
+        <action
+            android:id="@+id/action_user_recipes_to_recipeDataFragment2"
+            app:destination="@id/recipeDataFragment2" />
     </fragment>
     <fragment
         android:id="@+id/recipeFormFragment"
         android:name="com.example.behealthy.view.recipe.RecipeFormFragment"
         android:label="fragment_recipe_form"
         tools:layout="@layout/fragment_recipe_form" />
+    <fragment
+        android:id="@+id/recipeDataFragment2"
+        android:name="com.example.behealthy.view.recipe.RecipeDataFragment"
+        android:label="fragment_recipe_data"
+        tools:layout="@layout/fragment_recipe_data" />
 
 
 </navigation>

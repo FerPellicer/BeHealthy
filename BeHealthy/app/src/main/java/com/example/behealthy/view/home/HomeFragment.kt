@@ -14,14 +14,14 @@ import com.example.behealthy.databinding.FragmentHomeBinding
 import com.example.behealthy.model.data.Recipe
 import com.google.firebase.firestore.*
 
-open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
+open class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
     private lateinit var recipeArrayList: ArrayList<Recipe>
     private lateinit var recipesIds: ArrayList<String>
     private lateinit var recipeRecyclerView: RecyclerView
-    private lateinit var svSearch : SearchView
+    private lateinit var svSearch: SearchView
     private lateinit var myAdapter: CardViewAdapter
-    private lateinit var db : FirebaseFirestore
+    private lateinit var db: FirebaseFirestore
 
 
     private var _binding: FragmentHomeBinding? = null
@@ -59,7 +59,9 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
         recipesIds = arrayListOf()
 
-        myAdapter = CardViewAdapter(recipeArrayList, recipesIds)
+
+
+        myAdapter = CardViewAdapter(recipeArrayList, recipesIds, "homeFragment")
 
         myAdapter.ownRecipes(false, false)
 
@@ -67,7 +69,7 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
 
     }
 
-    override fun onResume(){
+    override fun onResume() {
         super.onResume()
         svSearch.setQuery("", false)
 
@@ -78,17 +80,16 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener{
     private fun eventChangeListener() {
 
         db = FirebaseFirestore.getInstance()
-        db.collection("recipesData").
-        addSnapshotListener(object : EventListener<QuerySnapshot> {
+        db.collection("recipesData").addSnapshotListener(object : EventListener<QuerySnapshot> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if (error != null){
+                if (error != null) {
                     return
                 }
 
-                for (dc : DocumentChange in value?.documentChanges!!){
+                for (dc: DocumentChange in value?.documentChanges!!) {
 
-                    if(dc.type == DocumentChange.Type.ADDED){
+                    if (dc.type == DocumentChange.Type.ADDED) {
                         recipeArrayList.add(dc.document.toObject(Recipe::class.java))
                         recipesIds.add(dc.document.id)
                     }

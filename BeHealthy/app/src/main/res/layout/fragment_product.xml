@@ -314,23 +314,90 @@
             android:layout_marginBottom="10dp"/>
 
 
-        <ScrollView
-            android:layout_width="300dp"
+        <HorizontalScrollView
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginBottom="50dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:scrollbars="horizontal">
 
-            <FrameLayout
+            <LinearLayout
                 android:id="@+id/markets"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:scrollbars="horizontal"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginLeft="400dp"
+                android:layout_marginRight="100dp">
 
 
-            </FrameLayout>
+                <ImageView
+                    android:id="@+id/alcampo"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_supermarkets_logo"
+                    android:src="@drawable/alcampo"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:layout_marginRight="25dp"/>
+
+                <ImageView
+                    android:id="@+id/carrefour"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_supermarkets_logo"
+                    android:src="@drawable/carrefour"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:layout_marginRight="25dp"/>
 
 
-        </ScrollView>
+                <ImageView
+                    android:id="@+id/hiperdino"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_supermarkets_logo"
+                    android:src="@drawable/hiperdino"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:layout_marginRight="25dp"/>
+
+
+                <ImageView
+                    android:id="@+id/mercadona"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_supermarkets_logo"
+                    android:src="@drawable/mercadona"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:visibility="invisible"
+                    tools:visibility="visible"
+                    android:layout_marginRight="25dp"/>
+
+                <ImageView
+                    android:id="@+id/spar"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/border_supermarkets_logo"
+                    android:src="@drawable/spar"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:visibility="invisible"
+                    tools:visibility="visible"/>
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
 
 
 

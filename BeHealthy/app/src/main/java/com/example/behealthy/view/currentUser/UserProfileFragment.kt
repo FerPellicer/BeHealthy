@@ -2,11 +2,11 @@ package com.example.behealthy.view.currentUser
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.behealthy.databinding.FragmentUserProfileBinding
 import com.example.behealthy.viewModel.AuthViewModel
@@ -22,7 +22,7 @@ class UserProfileFragment : Fragment() {
     private var _binding: FragmentUserProfileBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var userViewModel : UserViewModel
+    private lateinit var userViewModel: UserViewModel
     private lateinit var authViewModel: AuthViewModel
 
     private lateinit var currentName: String
@@ -30,8 +30,10 @@ class UserProfileFragment : Fragment() {
     private lateinit var currentSurname: String
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -104,29 +106,28 @@ class UserProfileFragment : Fragment() {
 
                             true -> updatedData(updatedData)
 
-                            false -> Toast.makeText(activity,
-                            "Nombre de usuario actualmente en uso",
-                            Toast.LENGTH_SHORT).show()
+                            false -> Toast.makeText(
+                                activity,
+                                "Nombre de usuario actualmente en uso",
+                                Toast.LENGTH_SHORT
+                            ).show()
 
-                            else -> {}
                         }
                     }
                 }
 
-            }
-
-            else {
+            } else {
                 Toast.makeText(
                     activity, "No se ha detectado ningún cambio",
-                    Toast.LENGTH_SHORT).show()
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
-        }
-
-        else {
+        } else {
             Toast.makeText(
                 activity, "Tiene que rellenar todos los campos",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -141,7 +142,8 @@ class UserProfileFragment : Fragment() {
 
                         Toast.makeText(
                             activity, "Fallo al intentar actualiza los datos",
-                            Toast.LENGTH_SHORT).show()
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                     is Resource.Success -> {
                         Toast.makeText(
@@ -169,9 +171,8 @@ class UserProfileFragment : Fragment() {
     }
 
 
-
-
     companion object {
-        @JvmStatic fun newInstance() = UserProfileFragment()
+        @JvmStatic
+        fun newInstance() = UserProfileFragment()
     }
 }

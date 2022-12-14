@@ -47,7 +47,6 @@ class AuthViewModel @Inject constructor(
     }
 
 
-
     fun logout() {
         repository.logout()
         _loginFlow.value = null

@@ -3,7 +3,6 @@ package com.example.behealthy.view.scanner
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
-import android.os.HandlerThread
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +20,6 @@ import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentScannerBinding
 import com.example.behealthy.model.data.Product
 import com.example.behealthy.viewModel.ProductViewModel
-import com.example.fragments.data.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -59,7 +57,6 @@ class ScannerFragment : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         productViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
@@ -86,8 +83,10 @@ class ScannerFragment : Fragment() {
 
         codeScanner.errorCallback = ErrorCallback {
             activity.runOnUiThread {
-                Toast.makeText(activity, "No se ha podido iniciar la cámara",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    activity, "No se ha podido iniciar la cámara",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -105,7 +104,8 @@ class ScannerFragment : Fragment() {
 
         bundle.putSerializable("productData", product)
 
-        Navigation.createNavigateOnClickListener(R.id.action_nav_scan_to_productFragment, bundle).onClick(view)
+        Navigation.createNavigateOnClickListener(R.id.action_nav_scan_to_productFragment, bundle)
+            .onClick(view)
 
     }
 
@@ -119,16 +119,21 @@ class ScannerFragment : Fragment() {
         super.onPause()
     }
 
-    private fun setUpPermissions(){
-        val permissions = ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.CAMERA)
+    private fun setUpPermissions() {
+        val permissions =
+            ContextCompat.checkSelfPermission(requireActivity(), android.Manifest.permission.CAMERA)
 
-        if(permissions != PackageManager.PERMISSION_GRANTED){
+        if (permissions != PackageManager.PERMISSION_GRANTED) {
             makeRequest()
         }
     }
 
-    private fun makeRequest(){
-        ActivityCompat.requestPermissions(requireActivity(), arrayOf(android.Manifest.permission.CAMERA), CAMERA_REQUEST_CODE)
+    private fun makeRequest() {
+        ActivityCompat.requestPermissions(
+            requireActivity(),
+            arrayOf(android.Manifest.permission.CAMERA),
+            CAMERA_REQUEST_CODE
+        )
     }
 
 
@@ -140,8 +145,12 @@ class ScannerFragment : Fragment() {
     ) {
         when (requestCode) {
             CAMERA_REQUEST_CODE -> {
-                if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(activity, "Necesitas los permisos de la cámara para escanear un código qr", Toast.LENGTH_SHORT).show()
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(
+                        activity,
+                        "Necesitas los permisos de la cámara para escanear un código qr",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -194,8 +203,6 @@ class ScannerFragment : Fragment() {
             }
         }
     }
-
-
 
 
     companion object {

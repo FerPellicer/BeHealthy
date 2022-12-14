@@ -49,7 +49,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productImage"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="HACENDADO"
+            tools:text="NOMBRE DEL PRODUCTO"
             android:layout_marginTop="-40dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
