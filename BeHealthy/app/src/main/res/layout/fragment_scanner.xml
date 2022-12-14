@@ -43,20 +43,31 @@
         <TextView
             android:id="@+id/productName"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="-70dp"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productImage"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="NOMBRE DEL PRODUCTO"
-            android:layout_marginTop="-40dp"/>
+            tools:text="NOMBRE DEL PRODUCTO" />
+
+        <TextView
+            android:id="@+id/productBrand"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textSize="12sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/productButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/productImage"
+            app:layout_constraintTop_toBottomOf="@+id/productName"
+            tools:text="MARCA" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/productButton"
             android:layout_width="130dp"
             android:layout_height="30dp"
-            android:layout_marginTop="-20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/productImage"

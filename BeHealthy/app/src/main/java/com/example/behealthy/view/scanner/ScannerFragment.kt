@@ -172,6 +172,7 @@ class ScannerFragment : Fragment() {
                         product = it.result.result.toObject(Product::class.java)!!
 
                         binding.productName.text = product.name
+                        binding.productBrand.text = product.productBrand
 
                         val imagen = product.image
 
