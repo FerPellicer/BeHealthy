@@ -62,60 +62,106 @@ _Historias técnicas:_
 
 - _Historia técnica 1:_ Diseñar los distintos mockups que necesita la aplicación y su icono. (esfuerzo aproximado de 3 horas)
 - _Historia técnica 2:_ Diseñar la organización de los distintos objetos en la base y de sus respectivos atributos. (esfuerzo aproximado de 1.5 horas)
+- _Historia técnica 3:_ Refactorizar código, ordenar las clases y paquetes. (esfuerzo aproximado de 6 horas)
+
 
 _Historias de usuario parte inicio de sesión:_
 
 - _Historia de usuario 1:_ Como usuario quiero poder registrarme con mi correo electrónico y una contraseña para iniciar sesión posteriormente (esfuerzo aproximado de 3 horas)
 - _Historia de usuario 2:_ Como usuario quiero poder iniciar sesión con mi correo electrónico y una contraseña para acceder a mi cuenta. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 3:_ Como usuario quiero poder cerrar sesión para que mi cuenta no este abierta en la aplicación. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 4:_ Como usuario quiero que si no cierro sesión, mi cuenta se mantenga iniciada. (esfuerzo aproximado de 3 horas)
 
 
 _Historias de usuario parte perfil:_
 
-- _Historia de usuario 3:_ Como usuario quiero tener un perfil donde se muestren todas mis recetas para que los demás usuarios puedan verlas todas juntas. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 4:_ Como usuario quiero poder guardar las recetas que más me gustan y verlas en una lista para no tener que buscarlas nuevamente. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 5:_ Como usuario quiero tener un historial de los productos escaneados para poder consultarlos sin tener que escanear el producto nuevamente. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 5:_ Como usuario quiero tener un perfil donde se muestren todas mis recetas para poder editarlas y eliminarlas cuando desee. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 6:_ Como usuario quiero poder ver las recetas guardardadas las recetas que más me gustan y verlas en una lista para no tener que buscarlas nuevamente. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 7:_ Como usuario quiero quiero poder modificar mis datos para cambiarlos en cualquier momento. (esfuerzo aproximado de 3 horas)
 
 _Historias de usuario parte de funcionalidad de escaneo:_
 
-- _Historia de usuario 6:_ Como usuario quiero poder escanear códigos de barra de productos para obtener su información. (esfuerzo aproximado de 6 horas)
-- _Historia de usuario 7:_ Como usuario quiero comparar precios del producto escaneado con otros supermercados para obtener el más económico. (esfuerzo aproximado de 4 horas)
-- _Historia de usuario 8:_ Como usuario quiero que se muestre una valoración general sobre la calidad del producto que escanee. (esfuerzo aproximado de 4 horas)
-- _Historia de usuario 9:_ Como usuario quiero obtener sugerencias de productos sanos cuando la aplicación indica una mala valoración a un producto. (esfuerzo aproximado de 4 horas)
-- _Historia de usuario 10:_ Como usuario quiero tener la posibilidad de recomendar productos que no estén contenidos en la base de datos de la aplicación. (esfuerzo aproximado de 3
-horas)
-- _Historia de usuario 11:_ Como usuario quiero conocer cuál es el método de calificación de los productos para entender las valoraciones. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 8:_ Como usuario quiero poder escanear códigos de barra de productos para obtener su información. (esfuerzo aproximado de 6 horas)
+- _Historia de usuario 9:_ Como usuario quiero poder ver los supermercados donde puedo encontrar el producto para comprarlo. (esfuerzo aproximado de 6 horas)
+- _Historia de usuario 10:_ Como usuario quiero que se muestre una valoración general sobre la calidad del producto que escanee. (esfuerzo aproximado de 4 horas)
 
 _Historias de usuario parte de funcionalidad de recetas:_
 
+- _Historia de usuario 11:_ Como usuario quiero poder eliminar mis recetas para borrarlas si lo deseo. (esfuerzo aproximado de 3 horas)
 - _Historia de usuario 12:_ Como usuario quiero poder publicar mis recetas para que los demás usuarios puedan verlas. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 13:_ Como usuario quiero poder ver recetas de otros usuarios para poder llevarlas a cabo y probarlas. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 14:_ Como usuario quiero comentar en otras publicaciones para poder dar mi opinión acerca de la misma. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 13:_ Como usuario quiero poder ver recetas de otros usuarios para poder llevarlas a cabo y probarlas. (esfuerzo aproximado de 6 horas)
+- _Historia de usuario 14:_ Como usuario quiero poder darle like a las recetas que se muestran para poder dejar mi like en las recetas que desee. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 15:_ Como usuario quiero poder guardar recetas, para poder tener una lista solo con las recetas guardadas. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 16:_ Como usuario quiero poder realizar búsquedas de recetas desde un buscador para solo ver un tipo de plato/receta. (esfuerzo aproximado de 3 horas)
+- _Historia de usuario 17:_ Como usuario quiero poder modificar mis recetas para editarlas si lo deseo. (esfuerzo aproximado de 3 horas)
 
-
-- _Historia de usuario 15:_ Como usuario quiero poder compartir recetas fuera de la app para que otras personas puedan verlas. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 16:_ Como usuario quiero poder realizar búsquedas de recetas/productos desde un buscador para solo ver un tipo de plato/receta. (esfuerzo aproximado de 3 horas)
-- _Historia de usuario 17:_ Como usuario quiero poder seguir a otras cuentas para que se me muestren las recetas que sube el usuario antes que otras recetas generales. (esfuerzo aproximado de 3 horas)
-
-## 6. Pila de Sprint
+## 6. Pila de Sprint 1
 
 En este primer Sprint tenemos (3 noviembre hasta el 20 de noviembre), lo cual es equivalente a 12 días lectivos (sin contar fines de semana). Suponiendo que cada miembro pueda invertir un aproximado de 3 horas diarias tendríamos un total de 36 horas de trabajo en este sprint.
 
 Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las siguientes historias:
 
-- _Historia técnica 1:_ Diseño de mockups y el icono de la apk  -->  6 horas
-- _Historia técnica 2:_ Diseño base de datos  --> 1. 5 horas
-- _Historia de usuario 1:_ Registro de cuenta  --> 3 horas
-- _Historia de usuario 2:_ Inicio de sesión  --> 3 horas
-- _Historia de usuario 6:_ Escanear Productos  --> 6 horas
-- _Historia de usuario 7:_ Comparar precio de productos  --> 3 horas
-- _Historia de usuario 8:_ Valoración general producto  --> 3 horas
-- _Historia de usuario 9:_ Sugerencias de otros productos  --> 4 horas
-- _Historia de usuario 10:_ Sugerir productos que no estén en la BD  --> 3 horas
-- _Historia de usuario 11:_ Conocer método de valoración  --> 3 horas
+- _Historia técnica 1:_ Diseño de mockups y el icono de la apk  -->  5 puntos
+- _Historia técnica 2:_ Diseño base de datos  --> 1 puntos
+- _Historia de usuario 1:_ Registro de cuenta  --> 3 puntos
+- _Historia de usuario 2:_ Inicio de sesión  --> 3 puntos
+- _Historia de usuario 3:_ Cerrar sesión --> 3 puntos
+- _Historia de usuario 4:_ Cuenta se mantenga iniciada. --> 2.5 puntos
+- _Historia de usuario 8:_ Escanear códigos de barra de productos --> 6 puntos
+- _Historia de usuario 12:_ Publicar mis recetas --> 3 puntos
+- _Historia de usuario 13:_ Ver recetas de otros usuarios --> 6 puntos
+- _Historia de usuario 16:_ Realizar búsquedas de recetas desde un buscador para solo ver un tipo de plato/receta. (esfuerzo aproximado de 3 puntos)
 
-Estas historias dan un total de 35.5 horas, de las 36 horas disponibles en total por los miembros del
-equipo.
+Estas historias dan un total de 35.5 puntos, de los 36 puntos disponibles en total por los miembros del equipo.
 
+## 7. Pila de Sprint 2
+
+En este segundo sprint tenemos (21 noviembre hasta el 3 de diciembre), lo cual es equivalente a 10 días lectivos (sin contar fines de semana). Suponiendo que cada miembro pueda invertir un aproximado de 3 horas diarias tendríamos un total de 30 horas de trabajo en este sprint.
+
+En el anterior sprint fue mejor de lo esperado, debido a que siempre el primer sprint sule ser "la prueba", donde no se sabe la velocidad que tendrá el equipo de desarrollo. De las historias que se han puesto, están todas muy avanzadas, aunque ha faltado por terminar H3, H4 y H12. Por otra parte la H8 casi se ha empezado. Esto debido a que el grupo no sabía como programar en kotlin, lo cuál nos ha dificultado el desarrollo de la aplicación.
+
+Por lo tanto de las 36.5 horas que se añadieron al sprint 1, se realizaron 30.5 puntos. Aunque esto incluyendo el periodo de aprendizaje que ha realizado el grupo a este nuevo lenguaje, y estructura de proyecto. Por lo tanto hemos decidido mantener el ritmo de puntos que se realizó en el sprint 1.
+
+Velocidad = Trabajo/Tiempo = 30.5/36 = 0.84
+
+Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las siguientes historias:
+
+- _Historia de usuario 3:_ Registro de cuenta  --> 0.5 puntos
+- _Historia de usuario 4:_ Cuenta se mantenga iniciada --> 0.5 puntos
+- _Historia de usuario 8:_ Escanear códigos de barra de productos --> 5 puntos
+- _Historia de usuario 12:_ Publicar mis recetas --> 0.5 puntos
+
+- _Historia de usuario 5:_ Mostrar las recetas del usuario (editar y eliminar). --> 3 puntos
+- _Historia de usuario 6:_ Ver las recetas guardardadas --> 5 puntos
+- _Historia de usuario 7:_ Modificar mis datos --> 3 puntos
+- _Historia de usuario 10:_ Valoración general producto --> 4 horas
+- _Historia de usuario 11:_ Eliminar mis recetas --> 3 horas
+- _Historia de usuario 12:_ Publicar recetas --> 3 horas
+
+Estas historias dan un total de 27.5 puntos, de las 30 puntos disponibles. Hemos decidido dejar un margen respecto al máximo, y en caso de ser necesario, añadir historias en el sprint.
+
+## 8. Pila de Sprint 3
+
+En este tercer sprint tenemos (4 diciembre hasta el 10 de diciembre), lo cual es equivalente a 6 días lectivos (sin contar fines de semana). Suponiendo que cada miembro pueda invertir un aproximado de 3 horas diarias tendríamos un total de 18 horas de trabajo en este sprint.
+
+Respecto al sprint anterior, el equipo ha sido capaz de terminar todas las histiorias excepto H6 y H10, debido a problemas que han surgido en su desarrollo a la hora de desarrollar funciones y llamadas a la bd.
+
+En este sprint, el equipo a decidido añadir la Historia técnica 3, de refactorización y organización del proyecto. La velocidad del equipo ha sido bastante aceptable en el sprint anterior, aunque hayan faltado 2 historias por finalizar. Por lo tanto este sprint nos permite añadir nuevas historias.
+
+Estos resultados tan buenos que se han visto en los sprints se debe a que los integrantes del grupo han trabajado también los fines de semana y lectivos, lo cual no se ha estado contando en los sprints.
+
+Velocidad = Trabajo/Tiempo = 27.5/30 = 0.91
+
+Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las siguientes historias:
+
+- _Historia de usuario 6:_ Ver las recetas guardardadas --> 1.5 puntos
+- _Historia de usuario 10:_ Valoración general producto --> 2 horas
+
+- _Historia de usuario 9:_ Ver los supermercados producto --> 6 horas
+- _Historia de usuario 14:_ Darle like recetas --> 3 horas
+- _Historia de usuario 15:_ Guardar recetas --> 3 horas
+
+Estas historias dan un total de 15.5 puntos, de los 18 puntos disponibles. Dejando así un margen para imprevistos en el proyecto para su futura entrega y presentación.
 
 ## 7. Herramientas que se utilizarán en este trabajo
 
@@ -130,9 +176,6 @@ cual se ha practicado a lo largo del curso.
 - FireBase como entorno de organización del backend de la aplicación.
 - Por último, para compartir el avance del proyecto, se empleará un repositorio de GitHub, donde los
 miembros tendrán disponible los avances que puedan realizar sus compañeros.
-
-
-
 
 
 
