@@ -16,7 +16,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
+import com.example.behealthy.R
 import com.example.behealthy.databinding.FragmentRecipeFormBinding
 import com.example.behealthy.model.data.Recipe
 import com.google.firebase.auth.FirebaseAuth
@@ -109,10 +111,7 @@ class RecipeFormFragment : Fragment() {
 
 
         if (notEmptyFields()) {
-
             createRecipe()
-            Toast.makeText(activity, "Receta Creada", Toast.LENGTH_SHORT).show()
-
         } else {
             Toast.makeText(activity, "Debe rellenar todos los datos", Toast.LENGTH_SHORT).show()
         }
@@ -133,6 +132,8 @@ class RecipeFormFragment : Fragment() {
 
 
     private fun createRecipe() {
+
+        Toast.makeText(activity, "Subiendo receta", Toast.LENGTH_SHORT).show()
 
         if (uri.toString() != "default") {
 
@@ -156,11 +157,22 @@ class RecipeFormFragment : Fragment() {
                         )
 
                         db.collection("recipesData").add(recipe)
-                            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+                            .addOnSuccessListener {
+                                Log.d(TAG, "DocumentSnapshot successfully written!")
+
+                                Toast.makeText(activity, "Receta subida correctamente", Toast.LENGTH_SHORT).show()
+
+                                Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_slide_menu)
+                                    .navigate(R.id.nav_home)
+                            }
                             .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e)
+                                Toast.makeText(activity, "Fallo al crear la receta", Toast.LENGTH_SHORT).show()
                             }
 
+
                         Log.i("Recipe image", "Image uploaded successfully!")
+
+
                     }
                 }
 

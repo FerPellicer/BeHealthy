@@ -1,5 +1,6 @@
 package com.example.behealthy.model.repository.user
 
+import android.content.ContentValues
 import android.net.Uri
 import android.util.Log
 import com.example.fragments.data.Resource
@@ -90,6 +91,28 @@ class UserRepositoryImpl @Inject constructor(
             e.printStackTrace()
             Resource.Failure(e.toString())
         }
+
+    }
+
+    override suspend fun checkUserName(userName: String): Boolean {
+        var used = 0
+        firestore.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (user in result) {
+                    Log.e("user", user.get("userName").toString())
+                    if (userName == user.data.get("userName").toString()) {
+                        used = 1
+                        Log.e("User", "Coincidencia")
+
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents. (Users)", exception)
+            }.await()
+
+        return used == 0
 
     }
 

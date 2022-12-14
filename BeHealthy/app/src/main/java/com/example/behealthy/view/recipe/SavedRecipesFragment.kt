@@ -91,7 +91,7 @@ class SavedRecipesFragment : Fragment() {
                     for (dc : DocumentChange in value?.documentChanges!!){
 
                         if(dc.type == DocumentChange.Type.ADDED && (usuario2.saveRecipes?.contains(dc.document.id) == true)){
-                            Log.e("lista", dc.document.toString())
+                            //Log.e("lista", dc.document.toString())
                             recipeArrayList.add(dc.document.toObject(Recipe::class.java))
                             recipesIds.add(dc.document.id)
                         }

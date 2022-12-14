@@ -28,6 +28,9 @@ class UserViewModel @Inject constructor(
     private val _imageUrlFlow = MutableLiveData<Resource<String>?>(null)
     val imageUrlFlow: LiveData<Resource<String>?> = _imageUrlFlow
 
+    private val _userNameAvailable = MutableLiveData<Boolean>(null)
+    val userNameAvailable: LiveData<Boolean> = _userNameAvailable
+
 
     fun userData() = viewModelScope.launch {
         val result = repository.userData()
@@ -43,6 +46,12 @@ class UserViewModel @Inject constructor(
         val result = repository.changeUserImage(fileUri, fileName, uid)
         _imageUrlFlow.value = result
     }
+
+    fun checkUserName(userName: String) = viewModelScope.launch {
+        val result = repository.checkUserName(userName)
+        _userNameAvailable.value = result
+    }
+
 
 
 }

@@ -29,12 +29,9 @@ class UserProfileFragment : Fragment() {
     private lateinit var currentUserName: String
     private lateinit var currentSurname: String
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         _binding = FragmentUserProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -47,7 +44,7 @@ class UserProfileFragment : Fragment() {
         authViewModel = ViewModelProvider(this)[AuthViewModel::class.java]
 
         loadUserData()
-        binding.updateButton.setOnClickListener { updateData() }
+        binding.updateButton.setOnClickListener { checkForm() }
 
 
     }
@@ -85,11 +82,10 @@ class UserProfileFragment : Fragment() {
         }
     }
 
-    private fun updateData() {
+    private fun checkForm() {
         val name = binding.nameField.text.toString()
         val userName = binding.userNameField.text.toString()
         val surName = binding.surnameField.text.toString()
-        val email = binding.emailField.text.toString()
 
         if (name.isNotEmpty() && userName.isNotEmpty() && surName.isNotEmpty()) {
 
@@ -100,23 +96,18 @@ class UserProfileFragment : Fragment() {
                     "surname" to surName,
                 )
 
-                userViewModel.updateUserData(updatedData)
-                userViewModel.userDataFlow.observe(viewLifecycleOwner) {
+
+                userViewModel.checkUserName(binding.userNameField.text.toString())
+                userViewModel.userNameAvailable.observe(viewLifecycleOwner) {
                     it?.let {
                         when (it) {
-                            is Resource.Failure -> {
-                                Log.e("Error", "Fallo al intentar actualiza los datos")
 
-                                Toast.makeText(
-                                    activity, "Fallo al intentar actualiza los datos",
-                                    Toast.LENGTH_SHORT).show()
-                            }
-                            is Resource.Success -> {
-                                Toast.makeText(
-                                    activity, "Los datos fueron actualizados con éxito ",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
+                            true -> updatedData(updatedData)
+
+                            false -> Toast.makeText(activity,
+                            "Nombre de usuario actualmente en uso",
+                            Toast.LENGTH_SHORT).show()
+
                             else -> {}
                         }
                     }
@@ -139,12 +130,45 @@ class UserProfileFragment : Fragment() {
         }
     }
 
+    private fun updatedData(updatedData: HashMap<String, Any>) {
+
+        userViewModel.updateUserData(updatedData)
+        userViewModel.userDataFlow.observe(viewLifecycleOwner) {
+            it?.let {
+                when (it) {
+                    is Resource.Failure -> {
+                        Log.e("Error", "Fallo al intentar actualiza los datos")
+
+                        Toast.makeText(
+                            activity, "Fallo al intentar actualiza los datos",
+                            Toast.LENGTH_SHORT).show()
+                    }
+                    is Resource.Success -> {
+                        Toast.makeText(
+                            activity, "Los datos fueron actualizados con éxito ",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        currentName = binding.nameField.text.toString()
+                        currentUserName = binding.userNameField.text.toString()
+                        currentSurname = binding.surname.text.toString()
+
+
+                    }
+                    else -> {}
+                }
+            }
+        }
+    }
+
     private fun isDataChanged(): Boolean {
 
         return binding.nameField.text.toString() != currentName ||
                 binding.userNameField.text.toString() != currentUserName ||
                 binding.surnameField.text.toString() != currentSurname
     }
+
+
 
 
     companion object {

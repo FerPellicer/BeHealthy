@@ -40,11 +40,11 @@ class RecipeDataFragment : Fragment() {
 
         val docRef = recipe.user?.let { db.collection("users").document(it) }
         docRef?.get()?.addOnSuccessListener { documentSnapshot ->
-            Log.d("document", documentSnapshot.toString())
+            //Log.d("document", documentSnapshot.toString())
             var usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
-            usuario.name?.let { Log.d("usuario1", it) }
+            //usuario.name?.let { Log.d("usuario1", it) }
 
-            binding.userName.text = usuario.userName
+            binding.userName.text = "@" + usuario.userName
             Glide.with(requireContext()).asBitmap().load(usuario.imageProfile).into(binding.userImage)
         }
 

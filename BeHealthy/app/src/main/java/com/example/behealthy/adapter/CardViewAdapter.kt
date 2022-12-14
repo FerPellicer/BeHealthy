@@ -107,11 +107,11 @@ class CardViewAdapter(
 
         val docRef = currentItem.user?.let { db.collection("users").document(it) }
         docRef?.get()?.addOnSuccessListener { documentSnapshot ->
-            Log.d("document", documentSnapshot.toString())
+            //Log.d("document", documentSnapshot.toString())
             val usuario : LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
-            usuario.name?.let { Log.d("usuario1", it) }
+            //usuario.name?.let { Log.d("usuario1", it) }
 
-            viewHolder.itemUserName.text = usuario.userName
+            viewHolder.itemUserName.text = "@" + usuario.userName
             Glide.with(context).asBitmap().load(usuario.imageProfile).into(viewHolder.itemUserImage)
 
 
@@ -119,7 +119,7 @@ class CardViewAdapter(
 
         val docRef2 = currentItem.user?.let { db.collection("users").document(firebaseAuth.currentUser?.uid.toString()) }
         docRef2?.get()?.addOnSuccessListener { documentSnapshot ->
-            Log.d("document", documentSnapshot.toString())
+            //Log.d("document", documentSnapshot.toString())
             val usuario2: LocalUser = documentSnapshot.toObject(LocalUser::class.java)!!
 
             if((usuario2.likesUser?.contains(recipesIds[original.indexOf(currentItem)]) == true)){
