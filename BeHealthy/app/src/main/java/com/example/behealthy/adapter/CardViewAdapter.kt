@@ -276,6 +276,7 @@ class CardViewAdapter(
     fun removeItem(position: Int) {
         recipeList.removeAt(position)
         original.removeAt(position)
+        recipesIds.removeAt(position)
         notifyDataSetChanged()
     }
 
