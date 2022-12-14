@@ -19,7 +19,8 @@ Emmanuel Peña Mendoza
 - 7. Pila de Sprint 2
 - 8. Pila de Sprint 3
 - 9. Herramientas que se utilizarán en este trabajo
-- 10. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+- 10. Análisis del equipo de trabajo
+- 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
 
 
 ## 1. ¿Qué es BeHealthy?
@@ -151,8 +152,6 @@ Respecto al sprint anterior, el equipo ha sido capaz de terminar todas las histi
 
 En este sprint, el equipo a decidido añadir la Historia técnica 3, de refactorización y organización del proyecto. La velocidad del equipo ha sido bastante aceptable en el sprint anterior, aunque hayan faltado 2 historias por finalizar. Por lo tanto este sprint nos permite añadir nuevas historias.
 
-Estos resultados tan buenos que se han visto en los sprints se debe a que los integrantes del grupo han trabajado también los fines de semana y lectivos, lo cual no se ha estado contando en los sprints.
-
 Velocidad = Trabajo/Tiempo = 27.5/30 = 0.91
 
 Teniendo estos datos en cuenta, el equipo de desarrollo a decidido añadir las siguientes historias:
@@ -180,9 +179,14 @@ cual se ha practicado a lo largo del curso.
 - Por último, para compartir el avance del proyecto, se empleará un repositorio de GitHub, donde los
 miembros tendrán disponible los avances que puedan realizar sus compañeros.
 
+## 10. Análisis del equipo de trabajo
+
+El equipo de trabajo se ha adaptado bastante bien a los sprints y a sus historias de usuario, teniendo índices de 0.8 y 0.9 en su realización. Una explicación para este suceso en los sprints se debe a que los integrantes del grupo han trabajado también los fines de semana y lectivos, lo cual no se ha estado contando en los sprints. 
+
+Además otro factore que ha ayudado a obtener estos valores, ha sido la organización del equipo en trello, la cual nos ha agilizado el trabajo y el tiempo que se ha empleado por los integrantes ha sido mucho menor.
 
 
-## 10. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+## 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
 
 - CODELABS 
 
