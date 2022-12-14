@@ -165,39 +165,40 @@ class ScannerFragment : Fragment() {
         if (productId.isDigitsOnly()) {
 
             productViewModel.productDataSnapshot(productId)
-            productViewModel.productDataSnapshot.observe(viewLifecycleOwner) {
-                it?.let {
+            if ( view != null) { // evitar Can't access the Fragment View's LifecycleOwner when getView() is null
+                productViewModel.productDataSnapshot.observe(viewLifecycleOwner) {
+                    it?.let {
 
-                    try {
-                        product = it.result.result.toObject(Product::class.java)!!
+                        try {
+                            product = it.result.result.toObject(Product::class.java)!!
 
-                        binding.productName.text = product.name
-                        binding.productBrand.text = product.productBrand
+                            binding.productName.text = product.name
+                            binding.productBrand.text = product.productBrand
 
-                        val imagen = product.image
+                            val imagen = product.image
 
-                        Glide.with(this).asBitmap().load(imagen)
-                            .into(binding.productImage)
+                            Glide.with(this).asBitmap().load(imagen)
+                                .into(binding.productImage)
 
-                        binding.product.visibility = View.VISIBLE
+                            binding.product.visibility = View.VISIBLE
 
-                    } catch (e: Exception) {
+                        } catch (e: Exception) {
 
-                        binding.product.visibility = View.INVISIBLE
+                            binding.product.visibility = View.INVISIBLE
 
-                        if (canShowMessage) {
-                            Toast.makeText(
-                                activity, "Ese producto no se encuentra en nuestra " +
-                                        "base de datos", Toast.LENGTH_SHORT
-                            ).show()
-                            canShowMessage = false
+                            if (canShowMessage) {
+                                Toast.makeText(
+                                    activity, "Ese producto no se encuentra en nuestra " +
+                                            "base de datos", Toast.LENGTH_SHORT
+                                ).show()
+                                canShowMessage = false
 
-                            // Habilitar tras 1s poder mostrar el mensaje
-                            handler.postDelayed({
-                                this.canShowMessage = true
-                            }, 1000)
+                                // Habilitar tras 1s poder mostrar el mensaje
+                                handler.postDelayed({
+                                    this.canShowMessage = true
+                                }, 1000)
+                            }
                         }
-
 
                     }
                 }
