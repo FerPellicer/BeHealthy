@@ -59,8 +59,6 @@ open class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
 
         recipesIds = arrayListOf()
 
-
-
         myAdapter = CardViewAdapter(recipeArrayList, recipesIds, "homeFragment")
 
         myAdapter.ownRecipes(false, false)

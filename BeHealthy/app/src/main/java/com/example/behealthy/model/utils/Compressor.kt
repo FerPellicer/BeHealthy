@@ -18,7 +18,7 @@ object Compressor {
         var bitmap = BitmapFactory.decodeStream(inputStream)
 
         // Rotate the bitmap if needed
-        if (angle != 0f) {
+        if (bitmap.width > bitmap.height && angle != 0f) {
             val matrix = Matrix()
             matrix.postRotate(angle)
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
