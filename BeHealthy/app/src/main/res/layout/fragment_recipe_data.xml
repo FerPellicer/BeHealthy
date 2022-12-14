@@ -64,6 +64,14 @@
             android:layout_marginBottom="8dp"
             app:srcCompat="@drawable/logo" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="25dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/rectangle"
+        android:layout_marginBottom="20dp">
         <TextView
             android:id="@+id/descriptionTitle"
             android:layout_width="wrap_content"
@@ -130,7 +138,9 @@
             android:justificationMode="inter_word"
             tools:text="-Paso 1 cocinar \n-Paso 2 jugar \n-Paso 3 bailar"
             android:textAppearance="@style/RecipesText"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+
 
 
 
