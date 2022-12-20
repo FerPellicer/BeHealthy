@@ -247,17 +247,15 @@ Además otro factor que ha ayudado a obtener estos valores, ha sido la organizac
 
 ## 12. PROBLEMAS ENCONTRADOS DURANTE EL DESARROLLO DEL CÓDIGO CON SUS RESPECTIVAS SOLUCIONES
 
-<br>
 
 ##### <font color="#FF0000"> 12.1 Error al cambiar la rotación del móvil.</font>
 - Solución: Añadimos en el Android manifest la propiedad android:screenOrientation dentro de cada etiqueta activity. Modo retrato o vertical.
 
 
 ##### <font color="#FF0000"> 12.2 Imagen rotada al llamar a la función para reducir su tamaño.</font>
-- Solución: Haciendo uso de la librería Matrix, antes de realizar la reducción, rotamos la imagen 90 grados. Sin embargo, este inconveniente solo se da en caso de que la imagen sea horizontal, por lo que no hemos podido solucionarlo para dicha situación, ya que resulta complicado determinar la orientación de una imagen a partir de sus dimensiones.  
-<br>
-
-    Existe una librería que permite obtener la orientación de una imagen pero no está disponible para esta versión de API.
+- Solución: Haciendo uso de la librería Matrix, antes de realizar la reducción, rotamos la imagen 90 grados. Sin embargo, este inconveniente solo se da en caso de que la imagen sea horizontal, por lo que no hemos podido solucionarlo para dicha situación, ya que resulta complicado determinar la orientación de una imagen a partir de sus dimensiones. 
+ 
+  Existe una librería que permite obtener la orientación de una imagen pero no está disponible para esta versión de API.
 
 
   
