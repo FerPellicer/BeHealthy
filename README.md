@@ -241,3 +241,82 @@ Además otro factor que ha ayudado a obtener estos valores, ha sido la organizac
 
 
 - GET FILE EXTENSION —> https://stackoverflow.com/questions/37951869/how-to-get-the-file-extension-in-android 
+
+<br>
+
+
+
+## 12. PROBLEMAS ENCONTRADOS DURANTE EL DESARROLLO DEL CÓDIGO CON SUS RESPECTIVAS SOLUCIONES
+
+<br>
+##### <font color="#FF0000"> 12.1 Error al cambiar la rotación del móvil.</font>
+- Solución: Añadimos en el Android manifest la propiedad android:screenOrientation dentro de cada etiqueta activity. Modo retrato o vertical.
+
+
+##### <font color="#FF0000"> 12.2 Imagen rotada al llamar a la función para reducir su tamaño.</font>
+- Solución: Haciendo uso de la librería Matrix, antes de realizar la reducción, rotamos la imagen 90 grados. Sin embargo, este inconveniente solo se da en caso de que la imagen sea horizontal, por lo que no hemos podido solucionarlo para dicha situación, ya que resulta complicado determinar la orientación de una imagen a partir de sus dimensiones.  
+<br>
+    Existe una librería que permite obtener la orientación de una imagen pero no está disponible para esta versión de API.
+
+
+  
+
+
+##### <font color="#FF0000"> 12.3 URL de imagen no actualizada al crear el usuario. </font>
+- Descripción: Al crear el usuario, no ha dado tiempo de subir la imagen y proporcionar la url de descarga de la imagen, por lo que el campo imageProfile que se envía a firestore está desactualizado.
+
+- Solución: Crear el usuario con la información que esté en el momento y dentro de la llamada para guardar la imagen, una vez obtenido el link,  volvemos a acceder a la base de datos y actualizamos dicho campo desde ese mismo “bloque” ayudándonos de la función OnCompleteListener.
+
+
+##### <font color="#FF0000"> 12.4 Integrar Navigation Drawer (Menú Hamburguesa) con BottomNavigationBar (Menú inferior)</font>
+- Solución:
+
+        setupActionBarWithNavController(navController,appBarConfiguration)
+        navView.setupWithNavController(navController)
+        bottomNavigationView.setupWithNavController(navController)
+
+
+
+##### <font color="#FF0000"> 12.5 Problemas al insertar ScrollView dentro de la actividad UserDataActivity. No se desplaza.</font>
+- Solución: ScrollView solo puede tener un hijo, es decir, dentro de un scrollview solo puede haber otra etiqueta, y dentro de esta última puede haber más de un hijo (etiqueta)
+
+
+
+
+##### <font color="#FF0000"> 12.6 Error al cambiar la rotación del móvil.</font>
+- Solución: Al volver a la pantalla principal tras actualizar la información del usuario dentro del apartado de perfil, no se actualizan los datos.
+
+
+
+##### <font color="#FF0000"> 12.7 En pantallas superiores a 6,1 pixeles por pulgada, EXISTE una franja blanca entre el bottom navigation view y el fragmento cargado.</font>
+
+- Esto no debería pasar puesto que las magnitudes están en dp, densidad de píxeles por pulgada.    
+  
+  <br>No hay solución: DP en XML se refiere a "dots per inch" (píxeles por pulgada) y no está directamente relacionado con el tamaño de la pantalla. DP en XML se utiliza para especificar la resolución de una imagen en un documento XML. La resolución se refiere a la cantidad de píxeles que se muestran en una pulgada de la imagen, lo que afecta la calidad de la imagen. 
+
+
+
+
+##### <font color="#FF0000"> 12.8 Error al cambiar la rotación del móvil.</font>
+- Solución: Dentro del onClickListener del corazón o like, realizar otra llamada a la función filter. 
+
+
+##### <font color="#FF0000"> 12.8 Producto escaneado no existe en la base de datos.</font>
+- Descripción: El escáner tiene una función de leer de forma continua. Al utilizar este modo escaneando un producto que no se encuentra en la base de datos, se muestra un mensaje al usuario, debido a la rapidez del lector, se realizan sucesivas llamadas en muy poco tiempo por lo que se muestra el mensaje y persiste durante un largo periodo de tiempo.
+<br>
+- Solución: Utilizar un handler para habilitar tras cierto tiempo (1s) que se pueda volver a mostrar el mensaje.
+
+##### <font color="#FF0000"> 12.9 Fallo de navegación al hacer click en CardView.</font>
+
+- Descripción: Como utilizamos el mismo cardview para toda la aplicación, se presentaron problemas a la hora de redireccionar, usando el navigation_graph, al hacer click. Puesto que según el contexto, se direccionaba a una actividad y cargando un fragmento u a otra.
+<br>
+- Solución: Añadir un nuevo parámetro al constructor del cardview que sirva para determinar el “contexto o la situación” en cada momento, para decidir a donde direccionar y a que mapa de navegación referenciar.
+
+#####  <font color="#FF0000"> 12.10 Fallo de navegación en el menú hamburguesa.</font>
+
+- Descripción: El menú hamburguesa no direccionaba bien porque para el caso de guardados y mis recetas, cargaba la actividad pero siempre con el mismo fragmento, el del perfil.
+<br>
+- Solución: Se realizó la redirección de cada botón “a mano”, se empezó una actividad y se redireccionó el fragmento haciendo uso del mapa de navegación.
+
+    En el caso de compartir, se añadió un intent.
+    
