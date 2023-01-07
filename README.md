@@ -21,6 +21,7 @@ Emmanuel Peña Mendoza
 - 9. Herramientas que se utilizarán en este trabajo
 - 10. Análisis del equipo de trabajo
 - 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+- 12. PROBLEMAS ENCONTRADOS DURANTE EL DESARROLLO DEL CÓDIGO CON SUS RESPECTIVAS SOLUCIONES
 
 
 ## 1. ¿Qué es BeHealthy?
@@ -296,8 +297,10 @@ Además otro factor que ha ayudado a obtener estos valores, ha sido la organizac
 
 
 
-##### <font color="#FF0000"> 12.8 Error al cambiar la rotación del móvil.</font>
-- Solución: Dentro del onClickListener del corazón o like, realizar otra llamada a la función filter. 
+##### <font color="#FF0000"> 12.8 Error al dale like a las recetas.</font>
+- Descripción: Como los likes se guardan dentro de las recetas, al realizar cambios en las mismas, si teníamos un filtro de búsqueda, el recycleview se reiniciaba y se perdía el filtro que se había aplicado. 
+
+- Solución: Dentro del onClickListener del corazón o like, realizar otra llamada a la función filter, lo cual mantenía los cambios. 
 
 
 ##### <font color="#FF0000"> 12.8 Producto escaneado no existe en la base de datos.</font>
