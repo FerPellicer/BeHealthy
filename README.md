@@ -4,8 +4,8 @@
 Este documento explica el objetivo de BeHealty como aplicación de software, las partes de la aplicación y la organización del equipo de desarrollo.
 
 ### Autores:
-Airam Lemes Herrera 
-Fernando Pellicer Sarmiento
+Airam Lemes Herrera, 
+Fernando Pellicer Sarmiento,
 Emmanuel Peña Mendoza
 
 ## Contenido del documento
