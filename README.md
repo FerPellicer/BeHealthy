@@ -20,8 +20,8 @@ Emmanuel Peña Mendoza
 - 8. Pila de Sprint 3
 - 9. Herramientas que se utilizarán en este trabajo
 - 10. Análisis del equipo de trabajo
-- 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
-- 12. PROBLEMAS ENCONTRADOS DURANTE EL DESARROLLO DEL CÓDIGO CON SUS RESPECTIVAS SOLUCIONES
+- 11. Road map (Guía para la realización del proyecto)
+- 12. Problemas encontrados durante el desarrollo del código con sus respectivas soluciones
 
 
 ## 1. ¿Qué es BeHealthy?
@@ -187,7 +187,7 @@ El equipo de trabajo se ha adaptado bastante bien a los sprints y a sus historia
 Además otro factor que ha ayudado a obtener estos valores, ha sido la organización del equipo en trello, la cual nos ha agilizado el trabajo y el tiempo que se ha empleado por los integrantes en la organización se ha reducido considerablemente.
 
 
-## 11. ROAD MAP (GUÍA PARA LA REALIZACIÓN DEL PROYECTO)
+## 11. Road map (Guía para la realización del proyecto)
 
 - CODELABS 
 
@@ -246,7 +246,7 @@ Además otro factor que ha ayudado a obtener estos valores, ha sido la organizac
 <br>
 
 
-## 12. PROBLEMAS ENCONTRADOS DURANTE EL DESARROLLO DEL CÓDIGO CON SUS RESPECTIVAS SOLUCIONES
+## 12. Problemas encontrados durante el desarrollo del código con sus respectivas soluciones
 
 
 ##### <font color="#FF0000"> 12.1 Error al cambiar la rotación del móvil.</font>
